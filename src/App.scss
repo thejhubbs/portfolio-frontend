@@ -1,0 +1,91 @@
+@import './variables.scss';
+
+* {
+  box-sizing:border-box;
+}
+
+.App {
+  text-align: center;
+  background-size:cover;
+  height:100vh;
+}
+
+.AppOverlay{
+  background: linear-gradient( 90deg, rgba(197,229,255,.3), rgba(124,141,156,.5)   );
+}
+
+.page-overview{
+  display:flex;
+}
+.extra-window {
+  width:100%;
+  padding:20px;
+  overflow-y: scroll;
+}
+
+.page-body-bg {
+  height:100vh;
+  background:url('./img/bg1.jpg');
+  background-size:cover;
+  border-right:solid blue 4px;
+}
+
+.page-body {
+  height:100vh;
+  padding:20px;
+  display:flex;
+  align-items:flex-end;
+  background:linear-gradient( rgba(0,139,255,.5), rgba(56,61,65,.8));
+
+  & > div {
+    width:100%;
+  }
+}
+
+.page-button {
+  color:white;
+  text-decoration:none;
+  background-color:rgb(39,84,150);
+  text-align:center;
+  display:inline-block;
+  width:140px;
+  padding:10px;
+  margin:10px;
+  font-size: 18px;
+  border-radius:8px;
+}
+
+.tfvs {
+  font-size:50%;
+}
+
+.tfs {
+  font-size:80%;
+}
+
+.tfb {
+  font-size:125%;
+}
+
+.tfvb {
+  font-size:150%;
+}
+
+.tfc-b {
+  color:rgb(0,139,255);
+}
+
+.tfc-p {
+  color:rgb(133,113,198);
+}
+
+.tfc-g {
+  color:rgb(80,255,147);
+}
+.tfc-gy {
+  color:#333;
+}
+
+.tfc-lg {
+  color:#999;
+}
