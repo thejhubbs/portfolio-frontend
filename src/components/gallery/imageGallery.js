@@ -91,9 +91,9 @@ class ImageGallery extends React.Component {
             </div>
 
             <div class="extra-window">
-                { this.state.focusImage ?
+                { Object.keys(this.state.focusImage).length > 1 ?
                 <ImageFocusItem project={this.state.focusImage} />
-                : ""
+                : "Please select a project to view more details about it."
                 }
             </div>
             </div>

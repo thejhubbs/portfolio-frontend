@@ -102,17 +102,13 @@ class About extends React.Component {
             </div>
 
             <div class="extra-window">
-                <h2>Goals</h2>
-                <p>Find a career doing something I'm passionate about; Develop;
-                    Making a positive impact on the world, no matter how small.
-                    Move up through ranks to a senior/engineer; my dream job </p>
 
                   <h2>Technologies/Languages</h2>
                   <div style={{display:"flex"}}>
                     <div style={{width:"50%"}}>
-                      <p>Please select one for more info</p>
+                      <p>Please select one for experience & samples of work</p>
                     {
-                      this.state.technologies.map(tech => <span style={{padding:"4px"}}>
+                      this.state.technologies.map(tech => <span className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
                         <TechItem tech={tech} focusId={selectedTech.technology_id ? selectedTech.technology_id : 0 } selectTech={this.selectTech} />
                       </span>)
                     }

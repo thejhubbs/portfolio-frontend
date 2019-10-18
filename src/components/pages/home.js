@@ -44,8 +44,14 @@ class Home extends React.Component {
             </div>
 
             <div class="extra-window">
-
-              "A short power statement, what I believe in and who I am"
+              <div style={{textAlign:'right'}}>
+                <h3>Motivated and experienced Developer & Engineer,<br />
+                  with great leadership and interpersonal skills,<br />
+                  seeking a full-time and long-term career;<br />
+                  to express my creativity & innovation,<br />
+                  and make a positive impact within<br />
+                  that company and the world</h3>
+              </div>
 
             </div>
         </div>

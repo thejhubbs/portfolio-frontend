@@ -19,6 +19,7 @@
 }
 .extra-window {
   width:100%;
+  height:100vh;
   padding:20px;
   overflow-y: scroll;
 }
@@ -45,7 +46,7 @@
 .page-button {
   color:white;
   text-decoration:none;
-  background-color:rgb(39,84,150);
+  background:linear-gradient(  rgb(49, 94, 160), rgb(59,104,170), rgb(39,84,150), rgb(19,64,130) );
   text-align:center;
   display:inline-block;
   width:140px;
@@ -53,23 +54,52 @@
   margin:10px;
   font-size: 18px;
   border-radius:8px;
+  &:hover {
+    background:linear-gradient(  rgb(149, 194, 255), rgb(159,204,255), rgb(139,184,250), rgb(119,164,230) );
+    color:black;
+  }
 }
 
-.tfvs {
-  font-size:50%;
+.menu-link {
+  color:white;
+  padding:5px;
+  text-decoration:none;
+  &:hover {
+    color:blue;
+  }
 }
 
-.tfs {
-  font-size:80%;
+.contact-icon-link {
+  display:inline-block;
+  width:25%;
 }
 
-.tfb {
-  font-size:125%;
-}
+.technology-button{
+      display: inline-block;
+      padding: 5px;
+      margin: 5px;
+      border-radius:5px;
+      cursor: pointer;
+      a {
+        color: white;
+      }
+    }
 
-.tfvb {
-  font-size:150%;
-}
+// .tfvs {
+//   font-size:50%;
+// }
+//
+// .tfs {
+//   font-size:80%;
+// }
+//
+// .tfb {
+//   font-size:125%;
+// }
+//
+// .tfvb {
+//   font-size:150%;
+// }
 
 .tfc-b {
   color:rgb(0,139,255);

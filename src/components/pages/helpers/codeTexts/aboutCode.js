@@ -24,6 +24,10 @@ function AboutCode() {
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ["<span className='tfb tfc-g'>The Ohio State</span> <span className='tfvb tfc-g'>University</span>",<br />
       &nbsp; &nbsp; &nbsp; &nbsp; <span className='tf tfc-b'>//Web Development</span><br />
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span className='tfb tfc-g'>Lambda School</span>"];<br />
+
+
+      &nbsp; &nbsp; &nbsp; &nbsp; const <span className='tfvb tfc'>professionalWork</span> = <br />
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span className='tfb tfc-g'>Web Dev Freelancer</span>"<br />
       &nbsp; &nbsp; &nbsp; &nbsp; <br />
       {'}'}
     </h3>

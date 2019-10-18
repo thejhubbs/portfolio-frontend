@@ -19,12 +19,15 @@ class ImageGalleryItem extends React.Component {
         var style = {
             margin: "10px",
             width: '40%',
-            display: 'inline-block'
+            display: 'inline-block',
+            cursor: "pointer"
         }
+        const project = this.props.project
+
         return <div onClick={this.selectImage} style={ style }>
-          <img width='100px' src={"nope.jpg"} /><br />
-          { this.props.project.project_name }<br />
-          { this.props.project.project_description }<br />
+          <img width='150px' src={project.image_url ? project.image_url : ""} /><br />
+          <b>{ project.project_name }</b><br />
+          { project.project_description }<br />
         </div>
     }
 
