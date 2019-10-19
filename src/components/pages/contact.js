@@ -37,7 +37,7 @@ class Contact extends React.Component {
 
                     <div className="tfc-lg">
 
-                        <h1 className="tfc-gy">//Say bye to the user</h1>
+                        <h1>//Say bye to the user</h1>
                         <ContactCode />
 
                         <div>

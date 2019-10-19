@@ -32,25 +32,27 @@ class Home extends React.Component {
 
                         <h2 style={style.icon}>&</h2>
 
-                        <h1 className="tfc-gy">//Welcome the user</h1>
+                        <h1 className="">//Welcome the user</h1>
                         <HomeCode />
 
                         <div>
                             <Link className="page-button" to="/about">About Me</Link>
-                            <Link className="page-button" to="/gallery">Portfolio</Link>
+                            <Link className="page-button pb-primary" to="/gallery">Portfolio</Link>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="extra-window">
-              <div style={{textAlign:'right'}}>
-                <h3>Motivated and experienced Developer & Engineer,<br />
+            <div className="extra-window">
+              <div className="home-window" >
+                <h3 class="tfc">Motivated and experienced Developer & Engineer,<br />
                   with great leadership and interpersonal skills,<br />
                   seeking a full-time and long-term career;<br />
                   to express my creativity & innovation,<br />
                   and make a positive impact within<br />
                   that company and the world</h3>
+
+
               </div>
 
             </div>

@@ -55,25 +55,25 @@ class About extends React.Component {
                 year: "2011-2017",
                 title: "Arby's",
                 role: "Shift Manager",
-                description: "Drawing, Design, Branding, Cartoons, Painting, Music, Nature"
+                description: "I originally got the job out of high school. Responsible for customer service & money handling, I matured here to the point of being Shift Leader my last two years."
             },
             {
                 year: "2017-Current",
                 title: "JLC (Landscaping)",
                 role: "Team Leader",
-                description: "Management, Work Ethic, Attention to Detail, Motivation, Training, Encouragement, Guidance"
+                description: "I quickly obtained a leadership position within months of joining the team, due to my management experience & work ethic. Responsible for running lawn-cutting routes & yearly maintenance, I really learned the value of attention to detail and being proud of your work."
             },
             {
                 year: "2019-Current",
                 title: "Upwork",
                 role: "Freelancer",
-                description: "HTML, CSS, JS, Wordpress"
+                description: "I continued doing freelance work this year, obtaining an average of 5/5 stars on reviews."
             },
             {
                 year: "2019-Current",
                 title: "Lambda School",
                 role: "Full Stack Web Developer",
-                description: "HTML, CSS, JS, React, Node/Express, creating a full product"
+                description: "React/Redux, Node/Express, creating a full product with a team. I'm currently attending Lambda School to cement my portfolio & technical skills to get a job."
             },
         ]
 
@@ -90,12 +90,12 @@ class About extends React.Component {
 
                     <div className="tfc-lg">
 
-                        <h1 className="tfc-gy">//Professional History</h1>
+                        <h1>//Professional History</h1>
                         <AboutCode />
 
                         <div>
                             <Link className="page-button" to="/bio">Let's Get Personal</Link>
-                            <Link className="page-button" to="/gallery">Let's Get Serious</Link>
+                            <Link className="page-button pb-primary" to="/gallery">Let's Get Serious</Link>
                         </div>
                     </div>
                 </div>
@@ -130,10 +130,12 @@ class About extends React.Component {
                     </div>
                   </div>
 
+                  <hr />
 
-                  <h2>Work & Education History</h2>
-                {data.reverse().map(item => <div>
-                    <h3>{item.title} ({item.year})</h3>
+
+                  <h2 style={{textDecoration:"underline"}}>Work & Education History</h2>
+                  {data.reverse().map(item => <div>
+                    <h4>{item.title} ({item.year})</h4>
                     <p>{item.description}</p>
                     </div>
                 )}

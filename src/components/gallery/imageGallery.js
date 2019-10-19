@@ -69,7 +69,7 @@ class ImageGallery extends React.Component {
 
                     {
                       this.state.page > 1 ?
-                        <span onClick={this.previousPage}> {'<'} </span>
+                        <span onClick={this.previousPage} style={{cursor:"pointer"}}> {'<'} </span>
                       : ""
                     }
 
@@ -77,7 +77,7 @@ class ImageGallery extends React.Component {
 
                     {
                       this.state.page < totalPages ?
-                        <span onClick={this.advancePage}> {'>'} </span>
+                        <span onClick={this.advancePage} style={{cursor:"pointer"}}> {'>'} </span>
                       : ""
                     }
 

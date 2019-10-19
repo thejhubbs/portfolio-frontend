@@ -1,41 +1,28 @@
 import React from 'react'
+import displayLines from './textDisplay'
+function Code() {
+    //These are arrays that make up a line. If the array element is a string, it's grey, but if its a subarray, the text is the color of the the other element.
+    const lines = [
+     [['function ', ['Hobbies() ', 'b'], '{' ], 0],
+     [['const ', ['hobbies ', 'b'], '= [' ], 1],
+     [['"', ['Art, Drawing, Painting', 'p'], '"' ], 2],
+     [['"', ['Music, Guitar, Singing, Writing', 'p'], '"' ], 2],
+     [[']' ], 1],
+     [['const ', ['skills ', 'b'], '= [' ], 1],
+     [['"', ['Design & Marketing', 'p'], '"' ], 2],
+     [['"', ['Interpersonal & Leadership', 'p'], '"' ], 2],
+     [[']' ], 1],
+     [['const ', ['funfacts ', 'b'], '= [' ], 1],
+     [['"', ['Spiritual, Buddhist, Christian', 'p'], '"' ], 2],
+     [['"', ['Motivated To Own Business', 'p'], '"' ], 2],
+     [[']' ], 1],
+     [['}' ], 0],
+    ]
 
-function BioCode() {
-    var style = {}
-    style.div = {
-        textAlign: "left",
-        backgroundColor: 'rgba(56,61,65, .8)',
-        padding: '10px',
-        borderRadius: '8px'
-    }
-    style.textFun = {
-        margin: '0',
-        fontSize: "20px"
-    }
-
-    return <div  style={style.div} >
-    <h3 style={style.textFun}>
-      <span className='tfs'>const</span> <span className='tfb tfc-b'>Personal</span> = {'{'}<br />
-    
-      &nbsp; &nbsp; &nbsp; &nbsp; <span className="tfc-b tfb">hobbies:</span> [<br/> 
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfs">Music, Guitar, Signing</span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfb">Art, Painting, <span class="tfs">Drawing</span></span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g"> </span>"<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; ],<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; <span className="tfc-b tfb">skills:</span> [<br/> 
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfs">Design & Marketing</span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfb">Interpersonal <span class="tfs">& Leadership</span></span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g"> </span>"<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; ],<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; <span className="tfc-b tfb">facts:</span> [<br/> 
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfs">Spiritual; Buddhist; Christian</span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfb"><span class="tfs">Loves</span> animals</span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g"> </span>"<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; ]<br />
-      {'}'}
-    </h3>
+    return <div className={"code-window"}>
+      {displayLines(lines)}
     </div>
 }
 
 
-export default BioCode
+export default Code

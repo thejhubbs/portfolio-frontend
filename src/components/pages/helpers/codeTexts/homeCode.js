@@ -1,34 +1,24 @@
 import React from 'react'
+import displayLines from './textDisplay'
+function Code() {
+    //These are arrays that make up a line. If the array element is a string, it's grey, but if its a subarray, the text is the color of the the other element.
+    const lines = [
+     [['function ', ['Portfolio() ', 'b'], '{' ], 0],
+     [['print "', ['Hello World', 'p'], '";' ], 1],
+     [['const ', ['name ', 'b'], '= ' ], 1],
+     [['"', ['Jordan Hubbard', 'g'], '"' ], 2],
+     [['const ', ['role ', 'b'], '= [' ], 1],
+     [['"', ['Computer Science & Engineering', 'p'], '"' ], 2],
+     [['"', ['Full Stack Web Development', 'p'], '"' ], 2],
+     [['"', ['Team Leader & Trainer', 'p'], '"' ], 2],
+     [[']' ], 1],
+     [['}' ], 0],
+    ]
 
-function HomeCode() {
-    var style = {}
-    style.div = {
-        textAlign: "left",
-        backgroundColor: 'rgba(56,61,65, .8)',
-        padding: '10px',
-        borderRadius: '8px'
-    }
-    style.textFun = {
-        margin: '0',
-        fontSize: "20px"
-    }
-
-    return <div  style={style.div} >
-    <h3 style={style.textFun}>
-      <span className='tfs'>function</span> <span className='tfb tfc-b'>Portfolio()</span> {'{'}<br />
-    
-      &nbsp; &nbsp; &nbsp; &nbsp; <span className='tfs'>print</span> "<span className='tfvb tfc-p'>Hello</span> world<span className='tfs'>";</span><br />
-      &nbsp; &nbsp; &nbsp; &nbsp; const <span className='tfvb tfc-b'>name</span> = 
-      <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span className='tfb tfc-g'>Jordan</span> <span className='tfvb tfc-g'>Hubbard</span>";<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; const <span className="tfc-b tfb">role</span> = [<br/> 
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfs">Computer Science & <span class="tfb">Engineering</span></span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g tfb">Full Stack <span class="tfs">Web Developer</span></span>",<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "<span class="tfc-g">Team Leader and Trainer</span>"<br />
-      &nbsp; &nbsp; &nbsp; &nbsp; ]<br />
-      {'}'}
-    </h3>
+    return <div className={"code-window"}>
+      {displayLines(lines)}
     </div>
 }
 
 
-export default HomeCode
+export default Code

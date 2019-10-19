@@ -32,7 +32,7 @@ class Bio extends React.Component {
 
                     <div className="tfc-lg">
 
-                        <h1 className="tfc-gy">//TMI</h1>
+                        <h1>//TMI</h1>
                         <BioCode />
 
                         <div>
@@ -58,7 +58,7 @@ class Bio extends React.Component {
 
                     title: "Artist/Designer",
                     description: "Drawing, Design, Branding, Cartoons, Painting, Music, Nature"
-                
+
                 </div>
             </div>
         </div>

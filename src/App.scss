@@ -2,6 +2,26 @@
 
 * {
   box-sizing:border-box;
+  color:$black-color;
+  font-family: "Noto Sans"
+}
+
+h1, h2 {
+  font-family: "VT323";
+  text-decoration: underline;
+}
+
+h3, h4, h5, h6, a {
+  font-family: "Roboto Condensed"
+}
+
+a {
+  color:$white-color;
+  text-decoration: underline;
+  &:hover {
+    font-weight:bolder;
+    color:$white-color;
+  }
 }
 
 .App {
@@ -11,7 +31,7 @@
 }
 
 .AppOverlay{
-  background: linear-gradient( 90deg, rgba(197,229,255,.3), rgba(124,141,156,.5)   );
+  background: linear-gradient( 90deg, rgba($white-color, .6), rgba($light-grey-color, .8)   );
 }
 
 .page-overview{
@@ -24,11 +44,37 @@
   overflow-y: scroll;
 }
 
+.home-window {
+  display:flex;
+  text-align: right;
+  height:100%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  & > h2, & > h3 {
+    padding:10px;
+    margin:10px;
+  }
+}
+
+.code-window {
+    text-align: left;
+    background-color: $black-color;
+    padding: 10px;
+    border-radius: 8px;
+}
+.code-window * {
+    color:$grey-color;
+}
+
+.code-line {
+  font-size:20px;
+  margin:2px;
+}
+
 .page-body-bg {
   height:100vh;
   background:url('./img/bg1.jpg');
   background-size:cover;
-  border-right:solid blue 4px;
 }
 
 .page-body {
@@ -36,7 +82,8 @@
   padding:20px;
   display:flex;
   align-items:flex-end;
-  background:linear-gradient( rgba(0,139,255,.5), rgba(56,61,65,.8));
+  background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
+  border-right:solid $dpc 8px;
 
   & > div {
     width:100%;
@@ -44,9 +91,9 @@
 }
 
 .page-button {
-  color:white;
+  color:$white-color;
   text-decoration:none;
-  background:linear-gradient(  rgb(49, 94, 160), rgb(59,104,170), rgb(39,84,150), rgb(19,64,130) );
+  background:linear-gradient(   $dpc, $primary-color, $primary-color, $dpc );
   text-align:center;
   display:inline-block;
   width:140px;
@@ -55,17 +102,27 @@
   font-size: 18px;
   border-radius:8px;
   &:hover {
-    background:linear-gradient(  rgb(149, 194, 255), rgb(159,204,255), rgb(139,184,250), rgb(119,164,230) );
-    color:black;
+    background:linear-gradient( $primary-color, $dpc, $primary-color, );
+    color:$white-color;
   }
 }
 
+.pb-primary {
+    background:linear-gradient(   $dhc, $highlight-color, $highlight-color, $dhc );
+    color:$black-color;
+
+    &:hover {
+      background:linear-gradient( $highlight-color, $dhc, $highlight-color, );
+    }
+
+}
+
 .menu-link {
-  color:white;
+  color:$white-color;
   padding:5px;
   text-decoration:none;
   &:hover {
-    color:blue;
+    color:$secondary-color;
   }
 }
 
@@ -81,41 +138,34 @@
       border-radius:5px;
       cursor: pointer;
       a {
-        color: white;
+        color: $white-color;
+        &:hover {
+          font-weight:bold;
+          color: $white-color;
+        }
       }
+
     }
 
-// .tfvs {
-//   font-size:50%;
-// }
-//
-// .tfs {
-//   font-size:80%;
-// }
-//
-// .tfb {
-//   font-size:125%;
-// }
-//
-// .tfvb {
-//   font-size:150%;
-// }
-
 .tfc-b {
-  color:rgb(0,139,255);
+  color:$primary-color;
 }
 
 .tfc-p {
-  color:rgb(133,113,198);
+  color:$secondary-color;
 }
 
 .tfc-g {
-  color:rgb(80,255,147);
+  color:$highlight-color;
 }
 .tfc-gy {
-  color:#333;
+  color:$grey-color;
 }
 
 .tfc-lg {
-  color:#999;
+  color:$light-grey-color;
+}
+
+.tfc-dg {
+  color:$dark-grey-color;
 }

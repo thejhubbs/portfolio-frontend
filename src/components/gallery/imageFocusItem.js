@@ -1,16 +1,24 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import FocusItemImage from './focusItemImage'
+
 
 class ImageFocusItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+          modal: false
         }
     }
+
+
+    toggle = () => this.setState({modal: !this.state.modal});
 
     render() {
       const project = this.props.project
         return Object.keys(project).length > 1 ? <div>
+
             <h1>{project.project_name}</h1>
 
 
@@ -46,29 +54,48 @@ class ImageFocusItem extends React.Component {
                   ))
                 }
               </div>
+
+
               <div style={{width:"50%"}}>
                   <img width='400px' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br />
                   {
-                    project.images.map(img =>
-                      <img width='100px' src={img.image_url} />
+                    [project.thumbnail, ...project.images].map(img => <FocusItemImage image={img} />
                     )
                   }
 
                   <br />
               </div>
+
+
             </div>
 
-            <h3>More about this project & what it entailed</h3>
-            {project.project_details}
+            {project.project_details ?
+              <div>
+                <h3>More about this project & what it entailed</h3>
+                {project.project_details}
+              </div>
+            : "" }
 
-            <h3>Hurdles, challenges & enjoyment in development</h3>
-            {project.project_development}
+            {project.project_development ?
+              <div>
+                <h3>Hurdles, challenges & enjoyment in development</h3>
+                {project.project_development}
+              </div>
+            : "" }
 
-            <h3>Looking back upon completion, how did I feel about the process?</h3>
-            {project.project_reflection}
+            {project.project_reflection ?
+              <div>
+                <h3>Looking back upon completion, how did I feel about the process?</h3>
+                {project.project_reflection}
+              </div>
+            : "" }
 
-            <h3>Is there anywhere else I'd like to take this project?</h3>
-            {project.project_history}
+            {project.project_history ?
+              <div>
+                <h3>Is there anywhere else I'd like to take this project?</h3>
+                {project.project_history}
+              </div>
+            : "" }
 
         </div>
         : ""

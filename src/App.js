@@ -43,6 +43,7 @@ class App extends React.Component {
           </div>
         </div>
         <Footer />
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed|VT323&display=swap" rel="stylesheet" />
       </div>
     );
   }
