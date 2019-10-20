@@ -1,5 +1,5 @@
 import React from 'react'
-import displayLines from './textDisplay'
+import displayLines from '../helpers/textDisplay'
 function Code() {
     //These are arrays that make up a line. If the array element is a string, it's grey, but if its a subarray, the text is the color of the the other element.
     const lines = [

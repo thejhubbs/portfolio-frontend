@@ -1,5 +1,7 @@
 @import './variables.scss';
 
+
+
 * {
   box-sizing:border-box;
   color:$black-color;
@@ -27,21 +29,63 @@ a {
 .App {
   text-align: center;
   background-size:cover;
-  height:100vh;
 }
 
-.AppOverlay{
-  background: linear-gradient( 90deg, rgba($white-color, .6), rgba($light-grey-color, .8)   );
+@media only screen and (min-width: 1200px) {
+  .App {
+    height:100vh;
+  }
 }
 
-.page-overview{
-  display:flex;
+.bg-overlay{
+  background: linear-gradient( 90deg, rgba($white-color, .8), rgba($light-grey-color, .8)   );
 }
-.extra-window {
-  width:100%;
-  height:100vh;
-  padding:20px;
-  overflow-y: scroll;
+
+
+
+@media only screen and (min-width: 1200px) {
+  .extra-window {
+    height:100vh;
+    overflow-y: scroll;
+    position:relative;
+  }
+}
+
+@media only screen and (max-width: 1159px) {
+  .extra-window {
+    min-height:100vh;
+    position:relative;
+  }
+}
+
+.extra-window-bg {
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media only screen and (min-width: 1200px) {
+  .fadePages{
+    position:absolute;
+    width:100%;
+    padding:20px;
+  }
+}
+
+@media only screen and (max-width: 1159px) {
+  .fadePages{
+    position:relative;
+    width:100%;
+    padding:20px;
+  }
+}
+
+
+
+
+.fp-bottom {
+  bottom:0;
+  text-align:center;
 }
 
 .home-window {
@@ -71,23 +115,45 @@ a {
   margin:2px;
 }
 
-.page-body-bg {
-  height:100vh;
-  background:url('./img/bg1.jpg');
-  background-size:cover;
+
+
+
+@media only screen and (min-width: 1200px) {
+
+  .page-body-bg {
+    height:100vh;
+    padding:0px;
+    background:url('./img/bg1.jpg');
+    background-size:cover;
+  }
+
+  .page-body {
+    height:100vh;
+    width:100%;
+    background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
+  }
 }
 
-.page-body {
-  height:100vh;
-  padding:20px;
-  display:flex;
-  align-items:flex-end;
-  background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
-  border-right:solid $dpc 8px;
+@media only screen and (max-width: 1159px) {
 
-  & > div {
-    width:100%;
+  .page-body-bg {
+    background:url('./img/bg1.jpg');
+    padding:0px;
+    background-size:cover;
   }
+
+  .page-body {
+    padding: 75px 0;
+    width:100%;
+    background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
+  }
+}
+
+
+
+.page-header {
+  width:100%;
+  text-align:center;
 }
 
 .page-button {
@@ -169,3 +235,97 @@ a {
 .tfc-dg {
   color:$dark-grey-color;
 }
+
+
+//******************************
+//******************************
+//******************************
+//******************************
+
+.fadePagesWindow-enter {
+  opacity:0;
+  transform: translateY(70px) scaleY(.9) scaleX(.9);
+}
+
+.fadePagesWindow-enter.fadePagesWindow-enter-active {
+  opacity:1;
+  transform: translateY(0) scaleY(1) scaleY(1);
+  transition: opacity 300ms ease-out, transform 300ms linear;
+}
+
+
+
+
+  .fadePagesWindow-exit {
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  .fadePagesWindow-exit.fadePagesWindow-exit-active {
+    opacity:0;
+    transform: translateY(200px);
+    transition: opacity 200ms ease-in, transform 200ms ease-in;
+}
+
+@media only screen and (max-width: 1159px) {
+  .fadePagesWindow-exit {
+    position:absolute;
+  }
+  .fadePagesWindow-exit.fadePagesWindow-exit-done {
+    position:relative;
+  }
+}
+
+//******************************
+//******************************
+//******************************
+//******************************
+
+
+.fadePagesMin-appear {
+  opacity:0;
+}
+
+.fadePagesMin-appear.fadePagesMin-appear-active {
+  opacity:1;
+  transition: opacity 800ms ease-out;
+}
+
+.fadePagesMin-enter {
+  opacity:0;
+}
+
+.fadePagesMin-enter.fadePagesMin-enter-active {
+  opacity:1;
+  transition: opacity 800ms ease-out;
+}
+
+
+  .fadePagesMin-exit {
+    opacity:1;
+  }
+
+  .fadePagesMin-exit.fadePagesMin-exit-active {
+    opacity:0;
+    transition: opacity 500ms ease-in;
+  }
+
+  @media only screen and (max-width: 1159px) {
+    .fadePagesMin-exit {
+      position:absolute;
+      opacity:1;
+    }
+    .fadePagesMin-exit.fadePagesMin-exit-active {
+      opacity:0;
+      transition: opacity 500ms ease-out;
+    }
+    .fadePagesMin-exit.fadePagesMin-exit-done {
+      position:relative;
+    }
+  }
+
+
+
+  @media only screen and (max-width: 1159px) {
+      .extra-window, .home-window { text-align:center; }
+  }

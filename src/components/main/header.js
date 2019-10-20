@@ -10,14 +10,7 @@ class Header extends React.Component {
     }
 
     render(){
-        var headerStyle = {
-            padding: '10px',
-            textAlign: 'center',
-            position: 'absolute',
-            width: '450px'
-        }
-        
-        return <div className="page-header" style={headerStyle}>
+        return <div className="page-header">
             <Menu />
         </div>
     }

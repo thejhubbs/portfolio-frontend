@@ -1,11 +1,13 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom'
-import AboutCode from './helpers/codeTexts/aboutCode'
+import {Row, Col} from 'reactstrap'
+import AboutCode from './professionalCode'
 import TechItem from './techItem'
 import axios from 'axios'
 import qs from 'qs'
 
-class About extends React.Component {
+
+class ProfessionalRight extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,11 +18,6 @@ class About extends React.Component {
     }
 
     componentDidMount = () => {
-        this.props.pageChange({
-            path: "/about",
-            bg: "bg2",
-            size: "small"
-        })
         axios.get('http://localhost:4222/api/technologies')
         .then(res => {
             this.setState({technologies: res.data, selectedTech: res.data[0] })
@@ -77,58 +74,40 @@ class About extends React.Component {
             },
         ]
 
-        var style = {}
 
-        style.icon = {fontSize:'100px',margin:'0',padding:'0',textAlign:'center',color:'white'}
-        style.width = {width: "450px"}
 
         const selectedTech = this.state.selectedTech
 
-        return  <div className="page-overview">
-            <div className="page-body-bg" style={style.width} >
-                <div className="page-body" style={style.width} >
-
-                    <div className="tfc-lg">
-
-                        <h1>//Professional History</h1>
-                        <AboutCode />
-
-                        <div>
-                            <Link className="page-button" to="/bio">Let's Get Personal</Link>
-                            <Link className="page-button pb-primary" to="/gallery">Let's Get Serious</Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="extra-window">
+        return <div>
 
                   <h2>Technologies/Languages</h2>
-                  <div style={{display:"flex"}}>
-                    <div style={{width:"50%"}}>
+                  <Row>
+
+                      <Col lg="6" xs="12">
                       <p>Please select one for experience & samples of work</p>
                     {
                       this.state.technologies.map(tech => <span className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
                         <TechItem tech={tech} focusId={selectedTech.technology_id ? selectedTech.technology_id : 0 } selectTech={this.selectTech} />
                       </span>)
                     }
-                    </div>
-                    <div style={{width:"50%"}}>
+                  </Col>
+
+                      <Col lg="6" xs="12">
                       {Object.keys(selectedTech).length > 1 ? <div>
                         <h3>{selectedTech.technology_name}</h3>
                         {selectedTech.technology_experience}
                         {selectedTech.projects && selectedTech.projects.length > 0 ? <div>
                           <h4>Projects Featuring</h4>
                           {selectedTech.projects.map(project => <div>
-                            <Link to={`/gallery?project=${project.project_id}`}>{project.project_name}</Link>
+                            <Link to={`/portfolio?project=${project.project_id}`}>{project.project_name}</Link>
 
                           </div>)}
                         </div> : ""}
 
                       </div>
                       : ""}
-                    </div>
-                  </div>
+                    </Col>
+                  </Row>
 
                   <hr />
 
@@ -140,8 +119,8 @@ class About extends React.Component {
                     </div>
                 )}
             </div>
-        </div>
     }
 }
 
-export default withRouter(About);
+
+export default withRouter(ProfessionalRight)

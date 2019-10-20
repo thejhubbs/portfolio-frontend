@@ -1,0 +1,34 @@
+import React from 'react';
+import {Link, withRouter} from 'react-router-dom'
+import AboutCode from './professionalCode'
+import TechItem from './techItem'
+import axios from 'axios'
+import qs from 'qs'
+
+export default class ProfessionalLeft extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
+
+    }
+
+
+
+    render() {
+
+
+        return  <div className="tfc-lg">
+
+                        <h1>//Professional History</h1>
+                        <AboutCode />
+
+                        <div>
+                            <Link className="page-button" to="/personal">Let's Get Personal</Link>
+                            <Link className="page-button pb-primary" to="/portfolio">Let's Get Serious</Link>
+                        </div>
+                    </div>
+
+
+    }
+}

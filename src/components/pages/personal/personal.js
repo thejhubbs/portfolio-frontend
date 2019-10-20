@@ -1,21 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import BioCode from './helpers/codeTexts/bioCode'
+import BioCode from './personalCode'
 
-class Bio extends React.Component {
+export class PersonalLeft extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
 
         }
-    }
-
-    componentDidMount = () => {
-        this.props.pageChange({
-            path: "/bio",
-            bg: "bg2",
-            size: "small"
-        })
     }
 
     render() {
@@ -24,28 +16,37 @@ class Bio extends React.Component {
         var style = {}
 
         style.icon = {fontSize:'100px',margin:'0',padding:'0',textAlign:'center',color:'white'}
-        style.width = {width: "450px"}
 
-        return  <div className="page-overview">
-            <div className="page-body-bg" style={style.width} >
-                <div className="page-body" style={style.width} >
+        return <div className="tfc-lg">
 
-                    <div className="tfc-lg">
+                  <h1>//TMI</h1>
+                  <BioCode />
 
-                        <h1>//TMI</h1>
-                        <BioCode />
-
-                        <div>
-                <Link className="page-button" to="/gallery">My Portfolio</Link>
-                <Link className="page-button" to="/contact">Contact Me</Link>
-                        </div>
-                    </div>
+                  <div>
+                    <Link className="page-button" to="/portfolio">My Portfolio</Link>
+                    <Link className="page-button" to="/contact">Contact Me</Link>
+                  </div>
                 </div>
-            </div>
 
-            <div class="extra-window">
+    }
+}
+export class PersonalRight extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    render() {
+
+
+        var style = {}
+
+        style.icon = {fontSize:'100px',margin:'0',padding:'0',textAlign:'center',color:'white'}
+
+        return <div>
             <h2>My Life & History</h2>
-            <div style={{overflowY:"scroll", height:'600px'}}>
                 <h3>Childhood & Hobbies</h3>
                 <p>Too smart for my own good growing up, advanced classes and still bored. Always a fan of computers. Junior year
                     the math teacher assigned an extra credit project in which we were supposed to learn BASIC to program our calculators
@@ -59,11 +60,7 @@ class Bio extends React.Component {
                     title: "Artist/Designer",
                     description: "Drawing, Design, Branding, Cartoons, Painting, Music, Nature"
 
-                </div>
             </div>
-        </div>
 
     }
 }
-
-export default Bio;

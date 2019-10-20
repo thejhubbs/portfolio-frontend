@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row } from 'reactstrap';
 import FocusItemImage from './focusItemImage'
 
 
@@ -22,8 +22,8 @@ class ImageFocusItem extends React.Component {
             <h1>{project.project_name}</h1>
 
 
-            <div style={{display:"flex"}}>
-              <div style={{width:"50%"}}>
+            <Row>
+              <Col lg="6" xs="12">
 
                 {project.project_description}
 
@@ -49,25 +49,25 @@ class ImageFocusItem extends React.Component {
                 {
                   project.technologies.map(tech => (
                     <div className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
-                      <Link to={`/about?tech=${tech.technology_id}`}>{tech.technology_name}</Link>
+                      <Link to={`/professional?tech=${tech.technology_id}`}>{tech.technology_name}</Link>
                     </div>
                   ))
                 }
-              </div>
+              </Col>
 
 
-              <div style={{width:"50%"}}>
-                  <img width='400px' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br />
+                <Col lg="6" xs="12">
+                  <img width='100%' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br />
                   {
                     [project.thumbnail, ...project.images].map(img => <FocusItemImage image={img} />
                     )
                   }
 
                   <br />
-              </div>
+              </Col>
 
 
-            </div>
+            </Row>
 
             {project.project_details ?
               <div>
