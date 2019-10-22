@@ -15,12 +15,16 @@ export default class ImageGallery extends React.Component {
     render() {
         const {page, projects, focusImage} = this.props.details;
 
+
         return <div id="portfolio">
+
                 { Object.keys(focusImage).length > 1 ?
                 <ImageFocusItem project={focusImage} />
+
                 : "Loading..."
                 }
-            </div>
+
+          </div>
 
     }
 }

@@ -83,7 +83,7 @@ class Body extends React.Component {
             <Col xl='4' xs='12' className="page-body-bg">
               <div className="page-body" >
                 <Header />
-
+                <Switch>
                     {
                       pages.map(({path, LeftComponent}) => <Route key={path} exact path={path}>
                           {({ match }) => (
@@ -96,6 +96,7 @@ class Body extends React.Component {
                         </Route>
                       )
                     }
+              </Switch>
 
               </div>
             </Col>

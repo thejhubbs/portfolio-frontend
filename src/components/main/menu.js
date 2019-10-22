@@ -3,9 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { white } from 'ansi-colors';
 
 function Menu(props) {
-
     return <span>
-        <NavLink className="menu-link" to="/">Home</NavLink>
+        <NavLink className="menu-link" exact to="/">Home</NavLink>
         <NavLink className="menu-link" to="/portfolio">Portfolio</NavLink>
         <NavLink className="menu-link" to="/professional">Professional</NavLink>
         <NavLink className="menu-link" to="/personal">Personal</NavLink>

@@ -12,15 +12,22 @@ class ImageGalleryItem extends React.Component {
     }
 
     isSelected = () => {
-        return this.props.focusId === this.props.project.project_id
+        return this.props.focusId == this.props.project.project_id
     }
 
     render() {
+
+      const selected = this.isSelected()
+
         var style = {
             margin: "10px",
             width: '40%',
+            padding:'10px',
             display: 'inline-block',
-            cursor: "pointer"
+            cursor: "pointer",
+            borderTop: `2px solid ${selected ? '#02080d' : 'transparent' }`,
+            borderBottom: `2px solid ${selected ? '#02080d' : 'transparent' }`,
+            background: selected ? "linear-gradient(transparent, rgba(255,255,255,.3), transparent)" : "transparent"
         }
         const project = this.props.project
 

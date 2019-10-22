@@ -5,6 +5,7 @@ import AboutCode from './professionalCode'
 import TechItem from './techItem'
 import axios from 'axios'
 import qs from 'qs'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 
 class ProfessionalRight extends React.Component {
@@ -20,10 +21,12 @@ class ProfessionalRight extends React.Component {
     componentDidMount = () => {
         axios.get('http://localhost:4222/api/technologies')
         .then(res => {
-            this.setState({technologies: res.data, selectedTech: res.data[0] })
+            this.setState({technologies: res.data})
             const query = qs.parse(this.props.location.search.substr(1))
             if(query && query.tech) {
                 this.selectTech({technology_id: query.tech})
+            } else{
+                this.selectTech({technology_id: res.data[0].technology_id})
             }
         })
     }
@@ -86,25 +89,29 @@ class ProfessionalRight extends React.Component {
                       <Col lg="6" xs="12">
                       <p>Please select one for experience & samples of work</p>
                     {
-                      this.state.technologies.map(tech => <span className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
-                        <TechItem tech={tech} focusId={selectedTech.technology_id ? selectedTech.technology_id : 0 } selectTech={this.selectTech} />
-                      </span>)
+                      this.state.technologies.map(tech =>
+
+                          <span className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
+                            <TechItem tech={tech} focusId={selectedTech.technology_id ? selectedTech.technology_id : 0 } selectTech={this.selectTech} />
+                          </span>
+                         )
                     }
                   </Col>
 
                       <Col lg="6" xs="12">
-                      {Object.keys(selectedTech).length > 1 ? <div>
+                      {Object.keys(selectedTech).length > 1 ? <div key={selectedTech.technology_id}>
+                      <CSSTransition key={selectedTech.technology_id} in={true} enter={true} exit={true} appear={true} timeout={1000} classNames="fadePortfolio" unmountOnExit><div>
                         <h3>{selectedTech.technology_name}</h3>
                         {selectedTech.technology_experience}
                         {selectedTech.projects && selectedTech.projects.length > 0 ? <div>
                           <h4>Projects Featuring</h4>
                           {selectedTech.projects.map(project => <div>
-                            <Link to={`/portfolio?project=${project.project_id}`}>{project.project_name}</Link>
+                            <Link className="plain-link"  to={`/portfolio?project=${project.project_id}`}>{project.project_name}</Link>
 
                           </div>)}
                         </div> : ""}
 
-                      </div>
+                      </div></CSSTransition></div>
                       : ""}
                     </Col>
                   </Row>

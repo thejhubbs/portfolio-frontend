@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row } from 'reactstrap';
 import FocusItemImage from './focusItemImage'
-
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 class ImageFocusItem extends React.Component {
     constructor(props) {
@@ -17,7 +17,10 @@ class ImageFocusItem extends React.Component {
 
     render() {
       const project = this.props.project
-        return Object.keys(project).length > 1 ? <div>
+        return Object.keys(project).length > 1 ?
+
+        <div>
+            <CSSTransition key={project.project_id} in={true} enter={true} exit={true} appear={true} timeout={1000} classNames="fadePortfolio" unmountOnExit><div>
 
             <h1>{project.project_name}</h1>
 
@@ -29,20 +32,20 @@ class ImageFocusItem extends React.Component {
 
                 {
                   project.github_link_2 ? <div>
-                    <a href={project.github_link} target="_blank">Github (Frontend)</a><br/>
-                    <a href={project.github_link_2} target="_blank">Github (Backend)</a><br/>
+                    <a className="plain-link" href={project.github_link} target="_blank">Github (Frontend)</a><br/>
+                    <a className="plain-link" href={project.github_link_2} target="_blank">Github (Backend)</a><br/>
                   </div>
                   :<div>
                     {
                         project.github_link ?
-                        <a href={project.github_link} target="_blank">Github</a>
+                        <a className="plain-link" href={project.github_link} target="_blank">Github</a>
                         : ""
                     }
                   </div>
                 }
                 {
                   project.live_link ?
-                    <a href={project.live_link} target="_blank">View Live</a>: ""
+                    <a className="plain-link" href={project.live_link} target="_blank">View Live</a>: ""
                 }
 
                 <h3>Technologies Used</h3>
@@ -57,13 +60,16 @@ class ImageFocusItem extends React.Component {
 
 
                 <Col lg="6" xs="12">
-                  <img width='100%' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br />
+                  <img width='100%' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br /><hr />
+                </Col>
+                <Col xs='12'>
+                  Click to enlarge:<br />
                   {
                     [project.thumbnail, ...project.images].map(img => <FocusItemImage image={img} />
                     )
                   }
 
-                  <br />
+                  <br /><hr />
               </Col>
 
 
@@ -97,7 +103,7 @@ class ImageFocusItem extends React.Component {
               </div>
             : "" }
 
-        </div>
+        </div></CSSTransition></div>
         : ""
     }
 

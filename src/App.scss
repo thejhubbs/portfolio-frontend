@@ -26,6 +26,16 @@ a {
   }
 }
 
+.plain-link {
+  background-color:$dark-grey-color;
+  padding:4px 12px;
+  margin:2px;
+  border-radius:10px;
+  display:inline-block;
+}
+
+
+
 .App {
   text-align: center;
   background-size:cover;
@@ -41,6 +51,14 @@ a {
   background: linear-gradient( 90deg, rgba($white-color, .8), rgba($light-grey-color, .8)   );
 }
 
+#contact {
+  display:flex;
+  height:90vh;
+
+  justify-content: center;
+  text-align:center;
+  align-items: center;
+}
 
 
 @media only screen and (min-width: 1200px) {
@@ -48,6 +66,7 @@ a {
     height:100vh;
     overflow-y: scroll;
     position:relative;
+    border-left:3px $dpc solid;
   }
 }
 
@@ -55,6 +74,7 @@ a {
   .extra-window {
     min-height:100vh;
     position:relative;
+    border-top:3px $dpc solid;
   }
 }
 
@@ -131,6 +151,7 @@ a {
     height:100vh;
     width:100%;
     background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
+    border-right:2px $llpc solid;
   }
 }
 
@@ -146,6 +167,8 @@ a {
     padding: 75px 0;
     width:100%;
     background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
+
+    border-bottom:2px $llpc solid;
   }
 }
 
@@ -185,16 +208,21 @@ a {
 
 .menu-link {
   color:$white-color;
-  padding:5px;
+  padding:15px 10px;
+  display:inline-block;
   text-decoration:none;
   &:hover {
-    color:$secondary-color;
+    font-weight:bold;
   }
+}
+
+.menu-link.active {
+    text-decoration:underline;
+    font-weight:bold;
 }
 
 .contact-icon-link {
   display:inline-block;
-  width:25%;
 }
 
 .technology-button{
@@ -329,3 +357,45 @@ a {
   @media only screen and (max-width: 1159px) {
       .extra-window, .home-window { text-align:center; }
   }
+
+
+
+  //******************************
+  //******************************
+  //******************************
+  //******************************
+
+
+  .fadePortfolio-appear {
+    opacity:0;
+    transform: translateY(10px);
+  }
+
+  .fadePortfolio-appear.fadePortfolio-appear-active {
+    opacity:1;
+    transform: translateY(0);
+    transition: opacity 300ms ease-in,transform 300ms ease-in;
+  }
+
+  .fadePortfolio-enter {
+    opacity:0;
+    transform: translateY(10px);
+  }
+
+  .fadePortfolio-enter.fadePortfolio-enter-active {
+    opacity:1;
+    transform: translateY(0);
+    transition: opacity 300ms ease-in,transform 300ms ease-in;
+  }
+
+
+    .fadePortfolio-exit {
+      opacity:1;
+      transform: translateX(0);
+    }
+
+    .fadePortfolio-exit.fadePortfolio-exit-active {
+      opacity:0;
+      transform: translateX(100px);
+      transition: opacity 500ms ease-out, transform 500ms ease-out;
+    }

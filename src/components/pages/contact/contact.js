@@ -45,12 +45,13 @@ export class ContactRight extends React.Component {
         style.icon = {fontSize:'100px',margin:'0',padding:'0',textAlign:'center',color:'white'}
 
 
-        return <div>
-            <h3>I seem to have missed you!<br />
-                Please leave a message after the beep.</h3>
+        return <div id="contact">
 
               <Row>
-
+                <Col xs="12">
+                  <h3>I seem to have missed you!<br />
+                      Please leave a message after the beep.</h3>
+                    </Col>
                 <Col md="3" sm="6" xs="12">
               <a className="contact-icon-link" href="mailto:thejhubbs@gmail.com" target="_blank">
                 <img src={require("../../../img/email.png")} height="64px" />
