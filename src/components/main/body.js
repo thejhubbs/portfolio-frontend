@@ -49,12 +49,12 @@ class Body extends React.Component {
     }
 
     selectImage = async (image) => {
-        const fullImage = await axios.get(`http://localhost:4222/api/projects/${image.project_id}`)
+        const fullImage = await axios.get(`https://jhubbsportfolio.herokuapp.com/api/projects/${image.project_id}`)
         this.setState({focusImage: fullImage.data});
     }
 
     loadPage = async () => {
-      const response = await axios.get('http://localhost:4222/api/projects')
+      const response = await axios.get('https://jhubbsportfolio.herokuapp.com/api/projects')
       const query = qs.parse(this.props.location.search.substr(1))
       if(query && query.project) {
         this.selectImage({project_id: query.project})
@@ -71,24 +71,24 @@ class Body extends React.Component {
           {path: "/contact", RightComponent: ContactRight, LeftComponent: ContactLeft},
           {path: "/personal", RightComponent: PersonalRight, LeftComponent: PersonalLeft},
           {path: "/portfolio", RightComponent: Portfolio, LeftComponent: Portfolio},
-          {path: "/professional", RightComponent: ProfessionalRight, LeftComponent: ProfessionalLeft},
+          {path: "/resume", RightComponent: ProfessionalRight, LeftComponent: ProfessionalLeft},
         ]
 
-        const pageIndexNum = ['/', '/contact', '/personal', '/portfolio', '/professional'].indexOf(this.props.location.pathname)
+        const pageIndexNum = ['/', '/contact', '/personal', '/portfolio', '/resume'].indexOf(this.props.location.pathname)
         const bgImg = ['selfie.jpg', 'bg3.jpg', 'bg5.jpg', 'bg8.jpg', 'bg2.jpg'][pageIndexNum]
 
 
         return <Container fluid="true">
           <Row>
-            <Col xl='4' xs='12' className="page-body-bg">
+            <Col xl='4' lg='5' xs='12' className="page-body-bg">
               <div className="page-body" >
                 <Header />
                 <Switch>
                     {
                       pages.map(({path, LeftComponent}) => <Route key={path} exact path={path}>
                           {({ match }) => (
-                            <CSSTransition in={match != null} timeout={1000} classNames="fadePagesMin" unmountOnExit>
-                                <div className="fadePages fp-bottom">
+                            <CSSTransition appear={true} enter={true} exit={true} in={match != null} timeout={1000} classNames="fadePagesMin" unmountOnExit>
+                                <div key={path} className="fadePages fp-bottom">
                                   { path === '/portfolio' ? <LeftComponent side={"left"} details={this.state} functions={functions} /> : <LeftComponent /> }
                                 </div>
                               </CSSTransition>
@@ -100,7 +100,7 @@ class Body extends React.Component {
 
               </div>
             </Col>
-            <Col xl='8' xs='12' className="extra-window-bg" style={{padding:"0", backgroundImage: `url(${require(`../../img/${bgImg}`)})` }}>
+            <Col xl='8' lg='7' xs='12' className="extra-window-bg" style={{padding:"0", backgroundImage: `url(${require(`../../img/${bgImg}`)})` }}>
               <div className="extra-window bg-overlay">
                 {
                   pages.map(({path, RightComponent}) => <Route key={path} exact path={path}>

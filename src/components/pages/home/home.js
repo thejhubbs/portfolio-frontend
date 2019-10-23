@@ -18,11 +18,10 @@ export class HomeLeft extends React.Component {
 
 
         return  <div className="tfc-lg">
-          <h2 style={style.icon}>***</h2>
           <h1 className="">//Welcome the user</h1>
           <HomeCode />
           <div>
-            <Link className="page-button" to="/professional">Skills & History</Link>
+            <Link className="page-button" to="/resume">Resume</Link>
             <Link className="page-button pb-primary" to="/portfolio">Portfolio</Link>
           </div>
         </div>
@@ -38,18 +37,23 @@ export class HomeRight extends React.Component {
     render() {
         var style = {}
 
-        style.icon = {fontSize:'100px',margin:'0',padding:'0',textAlign:'center',color:'white'}
+        style.icon = {fontSize:'60px',margin:'0',padding:'0',textAlign:'center',color:'white', textDecoration:'none'}
 
 
-        return <div className="home-window" >
-                  <h3 class="tfc">Motivated and experienced Developer & Engineer,<br />
-                    with great leadership and interpersonal skills,<br />
-                    seeking a full-time and long-term career;<br />
-                    to express my creativity & innovation,<br />
-                    and make a positive impact within<br />
-                    that company and the world</h3>
+        return <div className="home-window" ><div>
+
+                            <h2 className="d-block d-sm-none" style={style.icon}><hr className="menu-hr" />Jordan Andrew Hubbard<hr  className="menu-hr" /></h2>
+                  <h3 class="tfc">> Motivated and experienced<br className="d-block d-sm-none" /> Developer & Engineer<br />
+                    > Strong leadership and<br className="d-block d-sm-none" />teamwork skills<br />
+                    > Seeking a full-time and<br className="d-block d-sm-none" /> long-term career<br />
+                    > Express my creativity & innovation<br />
+                    > Make a positive impact<br className="d-block d-sm-none" /> within <br className="d-none d-sm-block" />
+                    that company<br className="d-block d-sm-none" /> and the world</h3>
+                  <Link className="page-button" onClick={() => window.scrollTo(0, 0)}  to="/resume">View My Resume</Link>
 
 
+
+</div>
                 </div>
     }
 }

@@ -19,7 +19,7 @@ class ProfessionalRight extends React.Component {
     }
 
     componentDidMount = () => {
-        axios.get('http://localhost:4222/api/technologies')
+        axios.get('https://jhubbsportfolio.herokuapp.com/api/technologies')
         .then(res => {
             this.setState({technologies: res.data})
             const query = qs.parse(this.props.location.search.substr(1))
@@ -32,7 +32,7 @@ class ProfessionalRight extends React.Component {
     }
 
     selectTech = (tech) => {
-      axios.get(`http://localhost:4222/api/technologies/${tech.technology_id}`)
+      axios.get(`https://jhubbsportfolio.herokuapp.com/api/technologies/${tech.technology_id}`)
       .then(res => this.setState({selectedTech: res.data}) )
     }
 
@@ -83,6 +83,10 @@ class ProfessionalRight extends React.Component {
 
         return <div>
 
+          <div id="resumeLinks">
+                  <div className="page-button" style={{marginTop:'10px'}}>View Resume in Traditional Format</div>
+                  <div className="page-button" style={{marginTop:'10px'}}>Download as Printable PDF</div>
+          </div>
                   <h2>Technologies/Languages</h2>
                   <Row>
 
@@ -91,7 +95,12 @@ class ProfessionalRight extends React.Component {
                     {
                       this.state.technologies.map(tech =>
 
-                          <span className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
+                          <span className="technology-button" style={
+                              {
+                                backgroundColor: tech.technology_hex_color,
+                                fontWeight: selectedTech.technology_id === tech.technology_id ? "bold" : "normal"
+                              }
+                            }>
                             <TechItem tech={tech} focusId={selectedTech.technology_id ? selectedTech.technology_id : 0 } selectTech={this.selectTech} />
                           </span>
                          )
@@ -99,16 +108,16 @@ class ProfessionalRight extends React.Component {
                   </Col>
 
                       <Col lg="6" xs="12">
-                      {Object.keys(selectedTech).length > 1 ? <div key={selectedTech.technology_id}>
+                      {Object.keys(selectedTech).length > 1 ? <div key={selectedTech.technology_id}><hr className="page-hr" />
                       <CSSTransition key={selectedTech.technology_id} in={true} enter={true} exit={true} appear={true} timeout={1000} classNames="fadePortfolio" unmountOnExit><div>
                         <h3>{selectedTech.technology_name}</h3>
                         {selectedTech.technology_experience}
                         {selectedTech.projects && selectedTech.projects.length > 0 ? <div>
-                          <h4>Projects Featuring</h4>
-                          {selectedTech.projects.map(project => <div>
+                          <h4>Projects:</h4>
+                          {selectedTech.projects.map(project => <span>
                             <Link className="plain-link"  to={`/portfolio?project=${project.project_id}`}>{project.project_name}</Link>
 
-                          </div>)}
+                          </span>)}
                         </div> : ""}
 
                       </div></CSSTransition></div>
@@ -116,16 +125,19 @@ class ProfessionalRight extends React.Component {
                     </Col>
                   </Row>
 
-                  <hr />
-
-
+                  <div id="resumeBottom">
                   <h2 style={{textDecoration:"underline"}}>Work & Education History</h2>
                   {data.reverse().map(item => <div>
                     <h4>{item.title} ({item.year})</h4>
                     <p>{item.description}</p>
                     </div>
                 )}
-            </div>
+
+
+
+                <Link className="page-button d-block d-sm-none"  onClick={() => window.scrollTo(0, 0)} to="/portfolio">My Portfolio</Link>
+                <Link className="page-button d-block d-sm-none" onClick={() => window.scrollTo(0, 0)} to="/contact">Contact</Link>
+            </div></div>
     }
 }
 

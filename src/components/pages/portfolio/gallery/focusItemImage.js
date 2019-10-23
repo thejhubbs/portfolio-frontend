@@ -20,7 +20,7 @@ class ImageFocusItem extends React.Component {
         const img = this.props.image
 
 
-        return <span>
+        return <span className="focusItemImage">
               <Modal isOpen={this.state.modal} size={"xl"} toggle={this.toggle} >
                 <ModalBody>
                   <img style={{maxWidth:'100%', maxHeight:'100%', margin:'5px'}} src={img.image_url} />

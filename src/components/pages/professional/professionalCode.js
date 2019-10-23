@@ -6,11 +6,11 @@ function Code() {
      [['function ', ['Professional() ', 'b'], '{' ], 0],
      [['print "', ['Programmer', 'p'], '", "Engineer"' ], 1],
      [['const ', ['schooling ', 'b'], '= [' ], 1],
-     [['"', ['The Ohio State University', 'p'], '"' ], 2],
-     [['"', ['Lambda School', 'p'], '"' ], 2],
+     [['"', ['The ', 'p'], ['Ohio State', 'g'], [' University', 'p'], '"' ], 2],
+     [['"', ['Lambda', 'g'], [' School', 'p'], '"' ], 2],
      [[']' ], 1],
-     [['const ', ['work ', 'b'], '= ' ], 1],
-     [['"', ['Freelance (Upwork)', 'p'], '"' ], 2],
+     [['const ', ['paidCodingWork ', 'b'], '= ' ], 1],
+     [['"', ['Freelance (', 'p'], ['Upwork', 'g'], [')', 'p'], '"' ], 2],
      [['}' ], 0],
     ]
 

@@ -13,6 +13,19 @@ h1, h2 {
   text-decoration: underline;
 }
 
+
+
+@media only screen and (min-width: 992px) {
+
+  h1 {font-size:42px;}
+
+}
+@media only screen and (max-width: 991px) {
+
+  h1 {font-size:36px;}
+
+}
+
 h3, h4, h5, h6, a {
   font-family: "Roboto Condensed"
 }
@@ -41,7 +54,7 @@ a {
   background-size:cover;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .App {
     height:100vh;
   }
@@ -61,7 +74,7 @@ a {
 }
 
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .extra-window {
     height:100vh;
     overflow-y: scroll;
@@ -70,7 +83,7 @@ a {
   }
 }
 
-@media only screen and (max-width: 1159px) {
+@media only screen and (max-width: 991px) {
   .extra-window {
     min-height:100vh;
     position:relative;
@@ -84,7 +97,7 @@ a {
   background-attachment: fixed;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
   .fadePages{
     position:absolute;
     width:100%;
@@ -92,7 +105,7 @@ a {
   }
 }
 
-@media only screen and (max-width: 1159px) {
+@media only screen and (max-width: 991px) {
   .fadePages{
     position:relative;
     width:100%;
@@ -101,6 +114,21 @@ a {
 }
 
 
+  @media only screen and (max-width: 991px) {
+      .extra-window, .home-window { text-align:center; }
+      .home-window {justify-content: center;}
+  }
+
+.focusItemImage {
+  display:inline-block;
+  padding:5px;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    border-bottom:2px solid $primary-color;
+    transition: border-bottom 200ms linear;
+  }
+}
 
 
 .fp-bottom {
@@ -117,6 +145,13 @@ a {
   & > h2, & > h3 {
     padding:10px;
     margin:10px;
+
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .home-window h3 {
+    font-size: 20px;
   }
 }
 
@@ -130,15 +165,26 @@ a {
     color:$grey-color;
 }
 
-.code-line {
-  font-size:20px;
-  margin:2px;
+
+
+@media only screen and (min-width: 992px) {
+  .code-line {
+    font-size:18px;
+    margin:2px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .code-line {
+    font-size:12px;
+    margin:2px;
+  }
 }
 
 
 
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 992px) {
 
   .page-body-bg {
     height:100vh;
@@ -155,7 +201,7 @@ a {
   }
 }
 
-@media only screen and (max-width: 1159px) {
+@media only screen and (max-width: 991px) {
 
   .page-body-bg {
     background:url('./img/bg1.jpg');
@@ -164,7 +210,7 @@ a {
   }
 
   .page-body {
-    padding: 75px 0;
+    padding: 25px 0;
     width:100%;
     background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
 
@@ -172,7 +218,61 @@ a {
   }
 }
 
+.individualProject:hover {
+  border-bottom:2px solid $lpc !important;
+  border-top:2px solid $lpc !important;
+  background:linear-gradient( rgba($white-color, .1), transparent, rgba($white-color, .1) );
+}
 
+.arrow {
+    margin: 0px 8px;
+    width:32px;
+    height:32px;
+    display:inline-block;
+    & > img {
+      padding:4px;
+      height: 24px;
+      width: 24px;
+      border:1px solid transparent;
+
+    }
+    & > img:hover {
+      border-radius: 12px;
+      border-bottom:1px solid $black-color;
+      border-top:1px solid $black-color;
+      transition: border 200ms linear;
+    }
+}
+
+.viewgit {
+  width:18px;
+  height:18px;
+  margin:0px 2px 0px 2px;
+  &:hover {
+  }
+}
+
+.viewgit-link {
+  color: $black-color;
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  margin: 0 2px;
+  padding:0px;
+  text-decoration:none;
+  &.view:hover{
+    text-decoration:none;
+    border-bottom: 2px solid $white-color;
+    border-right: 2px solid $white-color;
+    border-bottom-right-radius:4px;
+  }
+  &.git:hover{
+    text-decoration:none;
+    border-bottom: 2px solid $white-color;
+    border-left: 2px solid $white-color;
+    border-bottom-left-radius:4px;
+  }
+}
 
 .page-header {
   width:100%;
@@ -185,7 +285,7 @@ a {
   background:linear-gradient(   $dpc, $primary-color, $primary-color, $dpc );
   text-align:center;
   display:inline-block;
-  width:140px;
+  min-width:140px;
   padding:10px;
   margin:10px;
   font-size: 18px;
@@ -196,6 +296,12 @@ a {
   }
 }
 
+@media only screen and (max-width: 991px) {
+
+  .page-button{margin-top:50px;}
+  .pb-primary{margin-top:5px;}
+}
+
 .pb-primary {
     background:linear-gradient(   $dhc, $highlight-color, $highlight-color, $dhc );
     color:$black-color;
@@ -203,7 +309,30 @@ a {
     &:hover {
       background:linear-gradient( $highlight-color, $dhc, $highlight-color, );
     }
+}
 
+.menu-hr {
+  background-color:$white-color;
+  width:80%;
+}
+
+
+@media only screen and (max-width: 991px) {
+  #resumeLinks {
+    margin: -20px -20px 20px;
+    padding:20px;
+    background-color:$dpc;
+  }
+  #resumeBottom {
+    margin: 40px -20px -20px;
+    padding:40px 20px;
+    background-color:$llpc;
+  }
+}
+
+.page-hr {
+  background-color:$primary-color;
+  width:80%;
 }
 
 .menu-link {
@@ -231,11 +360,11 @@ a {
       margin: 5px;
       border-radius:5px;
       cursor: pointer;
-      a {
-        color: $white-color;
+      div {
+        color: $black-color;
         &:hover {
-          font-weight:bold;
-          color: $white-color;
+          text-decoration:underline;
+            font-weight:bold;
         }
       }
 
@@ -295,7 +424,7 @@ a {
     transition: opacity 200ms ease-in, transform 200ms ease-in;
 }
 
-@media only screen and (max-width: 1159px) {
+@media only screen and (max-width: 991px) {
   .fadePagesWindow-exit {
     position:absolute;
   }
@@ -338,7 +467,7 @@ a {
     transition: opacity 500ms ease-in;
   }
 
-  @media only screen and (max-width: 1159px) {
+  @media only screen and (max-width: 991px) {
     .fadePagesMin-exit {
       position:absolute;
       opacity:1;
@@ -354,9 +483,6 @@ a {
 
 
 
-  @media only screen and (max-width: 1159px) {
-      .extra-window, .home-window { text-align:center; }
-  }
 
 
 

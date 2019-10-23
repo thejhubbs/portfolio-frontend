@@ -52,7 +52,7 @@ class ImageFocusItem extends React.Component {
                 {
                   project.technologies.map(tech => (
                     <div className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
-                      <Link to={`/professional?tech=${tech.technology_id}`}>{tech.technology_name}</Link>
+                      <Link to={`/resume?tech=${tech.technology_id}`}>{tech.technology_name}</Link>
                     </div>
                   ))
                 }

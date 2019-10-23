@@ -20,10 +20,10 @@ export default class ProfessionalLeft extends React.Component {
 
         return  <div className="tfc-lg">
 
-                        <h1>//Professional History</h1>
+                        <h1>//Resume</h1>
                         <AboutCode />
 
-                        <div>
+                        <div className="d-none d-sm-block">
                             <Link className="page-button" to="/personal">Let's Get Personal</Link>
                             <Link className="page-button pb-primary" to="/portfolio">Let's Get Serious</Link>
                         </div>
