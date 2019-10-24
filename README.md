@@ -1,7 +1,8 @@
 TO DO:
 1. Really redo personal page
 2. Recheck all other text & information
-
+6. Lighten some of the tech colors
+7. Actually create resumes---
 
 
 

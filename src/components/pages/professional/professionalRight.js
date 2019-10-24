@@ -80,12 +80,14 @@ class ProfessionalRight extends React.Component {
 
 
         const selectedTech = this.state.selectedTech
+        const pdfLink = "https://docs.google.com/document/export?format=pdf&id=1-ZkXoXFkzdoZlHC8MPRU3XMDI91ZN8LuJ_fTdy6Eezc&token=AC4w5Vjdei8_nlqjy3Mi25hRqC0M5hsx4Q%3A1571880123637&ouid=116751004868990183303&includes_info_params=true"
+        const docLink = "https://docs.google.com/document/d/1-ZkXoXFkzdoZlHC8MPRU3XMDI91ZN8LuJ_fTdy6Eezc/edit#heading=h.wfkgwt8t5efm"
 
         return <div>
 
           <div id="resumeLinks">
-                  <div className="page-button" style={{marginTop:'10px'}}>View Resume in Traditional Format</div>
-                  <div className="page-button" style={{marginTop:'10px'}}>Download as Printable PDF</div>
+                  <a href={docLink} className="page-button" style={{marginTop:'10px'}}>View Resume in Traditional Format</a>
+                  <a href={pdfLink} className="page-button" style={{marginTop:'10px'}}>Download as Printable PDF</a>
           </div>
                   <h2>Technologies/Languages</h2>
                   <Row>
@@ -126,17 +128,17 @@ class ProfessionalRight extends React.Component {
                   </Row>
 
                   <div id="resumeBottom">
-                  <h2 style={{textDecoration:"underline"}}>Work & Education History</h2>
+                  <h2 style={{textDecoration:"underline", marginTop:"25px"}}>Work & Education History</h2>
                   {data.reverse().map(item => <div>
-                    <h4>{item.title} ({item.year})</h4>
+                    <h4>{item.title}</h4><h5>({item.year})</h5>
                     <p>{item.description}</p>
                     </div>
                 )}
 
 
 
-                <Link className="page-button d-block d-sm-none"  onClick={() => window.scrollTo(0, 0)} to="/portfolio">My Portfolio</Link>
-                <Link className="page-button d-block d-sm-none" onClick={() => window.scrollTo(0, 0)} to="/contact">Contact</Link>
+                <Link className="page-button d-block d-sm-none" onClick={() => window.scrollTo(0, 0)} to="/portfolio">My Portfolio</Link>
+                <Link className="page-button d-block d-sm-none" style={{marginTop:"5px"}} onClick={() => window.scrollTo(0, 0)} to="/contact">Contact</Link>
             </div></div>
     }
 }

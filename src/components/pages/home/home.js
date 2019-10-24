@@ -43,11 +43,11 @@ export class HomeRight extends React.Component {
         return <div className="home-window" ><div>
 
                             <h2 className="d-block d-sm-none" style={style.icon}><hr className="menu-hr" />Jordan Andrew Hubbard<hr  className="menu-hr" /></h2>
-                  <h3 class="tfc">> Motivated and experienced<br className="d-block d-sm-none" /> Developer & Engineer<br />
-                    > Strong leadership and<br className="d-block d-sm-none" />teamwork skills<br />
-                    > Seeking a full-time and<br className="d-block d-sm-none" /> long-term career<br />
-                    > Express my creativity & innovation<br />
-                    > Make a positive impact<br className="d-block d-sm-none" /> within <br className="d-none d-sm-block" />
+                  <h3 class="tfc">Developer & Engineer</h3>
+                  <h3>Leadership oriented and <br className="d-block d-sm-none" />strong teamwork skills</h3>
+                    <h3>Seeking a full-time and<br className="d-block d-sm-none" /> long-term career</h3>
+                    <h3>Where I'm encouraged to express my creativity & innovation</h3>
+                  <h3>And able to make a positive impact<br className="d-block d-sm-none" /> within <br className="d-none d-sm-block" />
                     that company<br className="d-block d-sm-none" /> and the world</h3>
                   <Link className="page-button" onClick={() => window.scrollTo(0, 0)}  to="/resume">View My Resume</Link>
 
