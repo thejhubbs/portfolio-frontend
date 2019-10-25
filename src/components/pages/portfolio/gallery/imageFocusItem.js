@@ -22,13 +22,13 @@ class ImageFocusItem extends React.Component {
         <div>
             <CSSTransition key={project.project_id} in={true} enter={true} exit={true} appear={true} timeout={1000} classNames="fadePortfolio" unmountOnExit><div>
 
-            <h1>{project.project_name}</h1>
+            <h2 style={{marginTop:'-20px'}} className="pageSeparatorHeader" >{project.project_name}</h2><br />
 
 
             <Row>
               <Col lg="6" xs="12">
 
-                {project.project_description}
+                <h5>{project.project_description}</h5>
 
                 {
                   project.github_link_2 ? <div>
@@ -48,7 +48,8 @@ class ImageFocusItem extends React.Component {
                     <a className="plain-link" href={project.live_link} target="_blank">View Live</a>: ""
                 }
 
-                <h3>Technologies Used</h3>
+                <div style={{padding:'15px'}}>
+                                <h3>Technologies Used</h3>
                 {
                   project.technologies.map(tech => (
                     <div className="technology-button" style={{backgroundColor: tech.technology_hex_color}}>
@@ -56,48 +57,52 @@ class ImageFocusItem extends React.Component {
                     </div>
                   ))
                 }
+                </div>
               </Col>
 
 
                 <Col lg="6" xs="12">
-                  <img width='100%' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br /><hr />
+                  <img width='100%' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br />
                 </Col>
-                <Col xs='12'>
-                  Click to enlarge:<br />
+                <Col xs='12' >
+                  <br />
+                  <div className="pageSeparatorHeader">
+                  <h4>Images</h4>
                   {
                     [project.thumbnail, ...project.images].map(img => <FocusItemImage image={img} />
                     )
-                  }
-
-                  <br /><hr />
+                  }<br />
+                  Click to enlarge<br />
+                  </div>
+                  <br />
               </Col>
 
 
             </Row>
 
             {project.project_details ?
-              <div>
+              <div style={{padding:'20px'}}>
                 <h3>More about this project & what it entailed</h3>
                 {project.project_details}
               </div>
             : "" }
 
             {project.project_development ?
-              <div>
+              <div style={{padding:'20px'}}>
                 <h3>Hurdles, challenges & enjoyment in development</h3>
                 {project.project_development}
               </div>
             : "" }
 
             {project.project_reflection ?
-              <div>
+              <div style={{padding:'20px'}}>
                 <h3>Looking back upon completion, how did I feel about the process?</h3>
                 {project.project_reflection}
               </div>
             : "" }
 
             {project.project_history ?
-              <div>
+              <div style={{padding:'20px'}}>
                 <h3>Is there anywhere else I'd like to take this project?</h3>
                 {project.project_history}
               </div>

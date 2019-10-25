@@ -41,14 +41,15 @@ class ProfessionalRight extends React.Component {
         var data = [
             {
                 year: "2011-2014",
-                title: "Computer Science & Engineering",
-                role: "",
+                title: "The Ohio State University",
+                role: "Computer Science & Engineering",
+                image: "ohiostatelogo.png",
                 description: "Engineering 101, Calculus, Algorithms, Low Level Languages (C++, C, Assembly) & Data Structures, Business & Marketing Electives"
             },
             {
                 year: "2013-2015",
-                title: "Web Developer",
-                role: "Freelancer",
+                title: "Startup Developer",
+                role: "Web Developer",
                 description: "HTML, CSS, JS, JQuery, PHP, SQL, Ruby on Rails"
             },
             {
@@ -59,7 +60,7 @@ class ProfessionalRight extends React.Component {
             },
             {
                 year: "2017-Current",
-                title: "JLC (Landscaping)",
+                title: "JLC Landscaping",
                 role: "Team Leader",
                 description: "I quickly obtained a leadership position within months of joining the team, due to my management experience & work ethic. Responsible for running lawn-cutting routes & yearly maintenance, I really learned the value of attention to detail and being proud of your work."
             },
@@ -67,12 +68,16 @@ class ProfessionalRight extends React.Component {
                 year: "2019-Current",
                 title: "Upwork",
                 role: "Freelancer",
+                link: "https://www.upwork.com/",
+                image: "upwork_icon.png",
                 description: "I continued doing freelance work this year, obtaining an average of 5/5 stars on reviews."
             },
             {
                 year: "2019-Current",
                 title: "Lambda School",
                 role: "Full Stack Web Developer",
+                link: "https://lambdaschool.com/",
+                image: "lambdalogo.png",
                 description: "React/Redux, Node/Express, creating a full product with a team. I'm currently attending Lambda School to cement my portfolio & technical skills to get a job."
             },
         ]
@@ -86,13 +91,14 @@ class ProfessionalRight extends React.Component {
         return <div>
 
           <div id="resumeLinks">
-                  <a href={docLink} className="page-button" style={{marginTop:'10px'}}>View Resume in Traditional Format</a>
-                  <a href={pdfLink} className="page-button" style={{marginTop:'10px'}}>Download as Printable PDF</a>
+                  <a href={docLink} target="_blank" className="page-button pb-primary" style={{marginTop:'10px'}}>View Resume in Traditional Format</a>
+                  <a href={pdfLink} target="_blank"  className="page-button pb-primary" style={{marginTop:'10px'}}>Download as Printable PDF</a>
           </div>
-                  <h2>Technologies/Languages</h2>
+                  <h2 className="pageSeparatorHeader" >Technologies/Languages</h2>
                   <Row>
 
                       <Col lg="6" xs="12">
+                        <br/>
                       <p>Please select one for experience & samples of work</p>
                     {
                       this.state.technologies.map(tech =>
@@ -127,11 +133,17 @@ class ProfessionalRight extends React.Component {
                     </Col>
                   </Row>
 
+
+
+                  <h2 className="pageSeparatorHeader" style={{textDecoration:"underline", marginTop:"25px"}}>Work & Education History</h2>
                   <div id="resumeBottom">
-                  <h2 style={{textDecoration:"underline", marginTop:"25px"}}>Work & Education History</h2>
-                  {data.reverse().map(item => <div>
-                    <h4>{item.title}</h4><h5>({item.year})</h5>
+
+                  {data.reverse().map(item => <div className="workHistoryItem">
+                    <h4 style={{textDecoration:"underline"}}>{item.title}</h4>
+                    {item.image ? <span><img className="resumeImage" src={require(`../../../img/${item.image}`)} /><br /></span> : ""}
+                    <h5>{item.role} ({item.year})</h5>
                     <p>{item.description}</p>
+                    {item.link ? <a className="resumeLink" href={item.link} target="_blank">More Information about {item.title}</a> : ""}
                     </div>
                 )}
 

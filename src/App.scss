@@ -14,7 +14,7 @@ h1, h2 {
 }
 
 
- 
+
 @media only screen and (min-width: 992px) {
 
   h1 {font-size:42px;}
@@ -142,6 +142,9 @@ a {
   height:100%;
   justify-content: flex-end;
   align-items: flex-end;
+  min-height: 100vh;
+    margin: -20px;
+    padding: 20px;
   & > h2, & > h3 {
     padding:10px;
     margin:10px;
@@ -316,18 +319,59 @@ a {
   width:80%;
 }
 
+.workHistoryItem {
+  margin: 0;
+  padding:20px;
+  border-top:2px solid $ddpc;
+  border-bottom:2px solid $dpc;
+  background-color:$llpc;
 
-@media only screen and (max-width: 991px) {
+  &:nth-child(even) {
+    background: rgba(lighten($llpc, 5%), .5);
+    border-top:2px solid lighten($llpc, 10%);
+    border-bottom:2px solid $primary-color;
+  }
+}
+
+
+.pageSeparatorHeader {
+  padding: 15px;
+  margin: 0 -20px;
+  background-color:$primary-color;
+  text-align: center;
+  color:$black-color;
+  border-bottom: 5px solid $ddpc;
+  border-top: 5px solid $llpc;
+  background: linear-gradient(175deg, $llpc, $lpc, $primary-color, $ddpc);
+}
+
+
   #resumeLinks {
-    margin: -20px -20px 20px;
+    margin: -20px -20px 0px;
     padding:20px;
     background-color:$dpc;
+    text-align: center;
   }
-  #resumeBottom {
-    margin: 40px -20px -20px;
-    padding:40px 20px;
-    background-color:$llpc;
+
+#resumeBottom {
+  text-align:center;
+    margin: 0px -20px -20px;
+}
+
+.resumeImage {
+  height:75px;
+}
+
+.resumeLink {
+  color: $black-color;
+  &:hover {
+    color:$ddpc;
   }
+}
+
+.resumeHr {
+  background-color:$dark-grey-color;
+  margin: 20px 0 30px;
 }
 
 .page-hr {
