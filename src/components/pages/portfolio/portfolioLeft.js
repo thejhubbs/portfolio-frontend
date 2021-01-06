@@ -17,10 +17,10 @@ export default class PortfolioLeft extends React.Component {
     render() {
       const {page, projects, focusImage} = this.props.details;
 
-      const endItem = page * 4 //4, 8, 12
-      const startPosition = endItem - 4 //0, 4, 8
+      const endItem = page * 3 //4, 8, 12
+      const startPosition = endItem - 3 //0, 4, 8
       const endPosition = endItem //4, 8, 12- but not included in return
-      const totalPages = Math.ceil( projects.length / 4 )
+      const totalPages = Math.ceil( projects.length / 3 )
 
 
         return  <div>
@@ -28,7 +28,7 @@ export default class PortfolioLeft extends React.Component {
             <i>Click on a project to see full details further down below.</i>
           </div>
 
-        <div style={{display:'flex',flexWrap:'wrap'}}>
+        <div style={{height: '100%'}}>
         {
             projects.slice(startPosition, endPosition).map(item => (item ?
                 <ImageGalleryItem focusId={focusImage.project_id} key={item.id} project={item} selectImage={this.selectImage} />
@@ -47,7 +47,7 @@ export default class PortfolioLeft extends React.Component {
 
         Page { page } of { totalPages }
 
-            <span onClick={this.props.functions.advancePage} style={{cursor:"pointer"}} className="arrow right-arrow">
+            <span onClick={this.props.functions.advancePage} data-pages={totalPages} style={{cursor:"pointer"}} className="arrow right-arrow">
                     {
                       page < totalPages ?
               <img  src={require("../../../img/chevron-right.svg")} alt="right arrow" />
@@ -56,7 +56,7 @@ export default class PortfolioLeft extends React.Component {
              </span>
 
         <div>
-            <Link className="page-button" to="/resume">Resume</Link>
+            <Link className="page-button" to="/resume">Technologies</Link>
             <Link className="page-button pb-primary" to="/contact">Contact</Link>
         </div>
         </div>

@@ -12,6 +12,8 @@ import ProfessionalLeft from '../pages/professional/professionalLeft'
 import ProfessionalRight from '../pages/professional/professionalRight'
 import Portfolio from '../pages/portfolio/portfolio'
 
+import Login from '../functionality/login'
+
 import qs from 'qs'
 import axios from 'axios'
 
@@ -41,11 +43,16 @@ class Body extends React.Component {
     }
 
     previousPage = () => {
-      this.setState({page: this.state.page-1})
+      let page = this.state.page - 1
+      if(page < 1) { page = 1 }
+      this.setState({page: page})
     }
 
-    advancePage = () => {
-      this.setState({page: this.state.page+1})
+    advancePage = (e) => {
+      let total = Number.parseInt(e.target.getAttribute('data-pages'))
+      let page = this.state.page + 1
+      if(page > total) { page = total }
+      this.setState({page: page})
     }
 
     selectImage = async (image) => {
@@ -72,13 +79,12 @@ class Body extends React.Component {
           {path: "/personal", RightComponent: PersonalRight, LeftComponent: PersonalLeft},
           {path: "/portfolio", RightComponent: Portfolio, LeftComponent: Portfolio},
           {path: "/resume", RightComponent: ProfessionalRight, LeftComponent: ProfessionalLeft},
+          {path: "/login", RightComponent: Login, LeftComponent: Login},
         ]
 
-        const pageIndexNum = ['/', '/contact', '/personal', '/portfolio', '/resume'].indexOf(this.props.location.pathname)
-        const bgImg = ['selfie.jpg', 'bg3.jpg', 'bg5.jpg', 'bg8.jpg', 'bg2.jpg'][pageIndexNum]
+        
 
-
-        return <Container fluid="true">
+        return <Container fluid="true" style={{overflow:'hidden'}} >
           <Row>
             <Col xl='4' lg='5' xs='12' className="page-body-bg">
               <div className="page-body" >
@@ -100,7 +106,7 @@ class Body extends React.Component {
 
               </div>
             </Col>
-            <Col xl='8' lg='7' xs='12' className="extra-window-bg" style={{padding:"0", backgroundImage: `url(${require(`../../img/${bgImg}`)})` }}>
+            <Col xl='8' lg='7' xs='12' className="extra-window-bg" style={{ padding:"0" }}>
               <div className="extra-window bg-overlay">
                 {
                   pages.map(({path, RightComponent}) => <Route key={path} exact path={path}>

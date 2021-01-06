@@ -19,7 +19,8 @@ class TechItem extends React.Component {
     render() {
         var style = {
             margin: "4px",
-            display: 'inline-block'
+            display: 'inline-block',
+            color: this.props.selected ? "white" : "black"
         }
         return <div onClick={this.selectTech} style={ style }>
           { this.props.tech.technology_name }<br />

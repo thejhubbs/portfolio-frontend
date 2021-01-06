@@ -34,7 +34,6 @@ a {
   color:$white-color;
   text-decoration: underline;
   &:hover {
-    font-weight:bolder;
     color:$white-color;
   }
 }
@@ -61,7 +60,7 @@ a {
 }
 
 .bg-overlay{
-  background: linear-gradient( 90deg, rgba($white-color, .8), rgba($light-grey-color, .8)   );
+  background: linear-gradient( 90deg, rgba(lighten($light-grey-color, .5), 1), rgba(darken($light-grey-color, .5), 1)   );
 }
 
 #contact {
@@ -79,7 +78,6 @@ a {
     height:100vh;
     overflow-y: scroll;
     position:relative;
-    border-left:3px $dpc solid;
   }
 }
 
@@ -89,12 +87,6 @@ a {
     position:relative;
     border-top:3px $dpc solid;
   }
-}
-
-.extra-window-bg {
-  background-size:cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 @media only screen and (min-width: 992px) {
@@ -192,22 +184,20 @@ a {
   .page-body-bg {
     height:100vh;
     padding:0px;
-    background:url('./img/bg1.jpg');
-    background-size:cover;
+    
+    
   }
 
   .page-body {
     height:100vh;
     width:100%;
-    background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
-    border-right:2px $llpc solid;
+    background:linear-gradient( rgba($primary-color, 1), rgba($dpc, 1) );
   }
 }
 
 @media only screen and (max-width: 991px) {
 
   .page-body-bg {
-    background:url('./img/bg1.jpg');
     padding:0px;
     background-size:cover;
   }
@@ -217,14 +207,11 @@ a {
     width:100%;
     background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
 
-    border-bottom:2px $llpc solid;
   }
 }
 
 .individualProject:hover {
-  border-bottom:2px solid $lpc !important;
-  border-top:2px solid $lpc !important;
-  background:linear-gradient( rgba($white-color, .1), transparent, rgba($white-color, .1) );
+   background:linear-gradient( rgba($white-color, .1), transparent, rgba($white-color, .1) );
 }
 
 .arrow {
@@ -236,13 +223,10 @@ a {
       padding:4px;
       height: 24px;
       width: 24px;
-      border:1px solid transparent;
 
     }
     & > img:hover {
       border-radius: 12px;
-      border-bottom:1px solid $black-color;
-      border-top:1px solid $black-color;
       transition: border 200ms linear;
     }
 }
@@ -251,8 +235,7 @@ a {
   width:18px;
   height:18px;
   margin:0px 2px 0px 2px;
-  &:hover {
-  }
+  
 }
 
 .viewgit-link {
@@ -322,14 +305,10 @@ a {
 .workHistoryItem {
   margin: 0;
   padding:20px;
-  border-top:2px solid $ddpc;
-  border-bottom:2px solid $dpc;
   background-color:$llpc;
 
   &:nth-child(even) {
     background: rgba(lighten($llpc, 5%), .5);
-    border-top:2px solid lighten($llpc, 10%);
-    border-bottom:2px solid $primary-color;
   }
 }
 
@@ -340,8 +319,6 @@ a {
   background-color:$primary-color;
   text-align: center;
   color:$black-color;
-  border-bottom: 5px solid $ddpc;
-  border-top: 5px solid $llpc;
   background: linear-gradient(175deg, $llpc, $lpc, $primary-color, $ddpc);
 }
 
@@ -385,13 +362,12 @@ a {
   display:inline-block;
   text-decoration:none;
   &:hover {
-    font-weight:bold;
+    text-decoration: underline;
   }
 }
 
 .menu-link.active {
     text-decoration:underline;
-    font-weight:bold;
 }
 
 .contact-icon-link {
@@ -407,8 +383,7 @@ a {
       div {
         color: $black-color;
         &:hover {
-          text-decoration:underline;
-            font-weight:bold;
+          color: $white-color;
         }
       }
 

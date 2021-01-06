@@ -8,10 +8,10 @@ function Code() {
      [['const ', ['name ', 'b'], '= ' ], 1],
      [['"', ['Jordan Hubbard', 'g'], '"' ], 2],
      [['const ', ['role ', 'b'], '= [' ], 1],
-     [['"', ['Computer Science & Engineering', 'p'], '"' ], 2],
-     [['"', ['Full Stack Web Development', 'p'], '"' ], 2],
-     [['"', ['Team Leader & Trainer', 'p'], '"' ], 2],
-     [[']' ], 1],
+     [['"', ['Full Stack Web Development', 'p'], '",' ], 2],
+     [['"', ['Small Business Consultation & Tutoring', 'p'], '",' ], 2],
+     [['"', ['Media & Design', 'p'], '"' ], 2],
+     [['];' ], 1],
      [['}' ], 0],
     ]
 
