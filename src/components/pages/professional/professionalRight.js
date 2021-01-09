@@ -69,6 +69,14 @@ class ProfessionalRight extends React.Component {
     }
   }
 
+  addTechnology = () => {
+    let data = {technology_name: "something", technology_experience: "something", technology_hex_color: "#666"}
+    
+    axios.post(apiPath('/technologies'), data)
+        .then(res => {
+            this.reload()
+        })
+  }
 
   changeValue = (name, value) => {
     let tech = { ...this.state.selectedTech }
@@ -113,6 +121,9 @@ class ProfessionalRight extends React.Component {
         <Col lg="6" xs="12">
           <br />
           <p>Please select one for experience & samples of work</p>
+          
+        <span onClick={this.addTechnology}>Add Technology</span>
+
           {
             this.state.technologies.map(tech =>
 
