@@ -11,7 +11,7 @@ class Header extends React.Component {
 
     render(){
         return <div className="page-header">
-            <Menu />
+            <Menu auth={this.props.auth} />
         </div>
     }
 }

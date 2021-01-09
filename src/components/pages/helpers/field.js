@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { curr_user, token, expireTokenCheck } from '../../../components/functionality/user'
+
 class Field extends React.Component {
     constructor(props) {
         super(props)
@@ -26,8 +28,12 @@ class Field extends React.Component {
     render() {
         let value = this.props.item[this.props.name] 
         return <>
-            { this.state.edit ? <form onSubmit={this.submitForm}><input style={{width:'100%'}} onChange={this.changeValue} value={value} /></form> : value }
-            <span onClick={this.toggle}>{value === "" || !value ? this.props.name : "" }x</span>
+            { this.state.edit ? 
+                <form onSubmit={this.submitForm}>
+                    <input style={{width:'100%'}} onChange={this.changeValue} value={value} /></form> : value }
+
+            { curr_user ? 
+            <span onClick={this.toggle}>{value === "" || !value ? this.props.name : "" }e</span> : "" }
         </>
     }
 }

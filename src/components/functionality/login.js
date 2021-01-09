@@ -28,6 +28,22 @@ class Login extends React.Component {
         e.preventDefault()
         axios.post(apiPath('/users/login'), this.state.form)
             .then(res => {
+                this.props.auth.login(res.data.user, res.data.token)
+                this.setState({ message: res.message })
+            })
+            .catch(err => {
+                
+                this.setState({ message: err.message })
+
+            })
+    }
+
+    
+    createNew = (e) => {
+        e.preventDefault()
+        axios.post(apiPath('/users'), this.state.form)
+            .then(res => {
+                console.log(res)
                 this.setState({ message: res.message })
             })
             .catch(err => {
@@ -41,9 +57,16 @@ class Login extends React.Component {
         return <div>
             <p>{this.state.message}</p>
             <form onSubmit={this.submitForm} >
-                <input type="text" value={this.state.username} onChange={this.updateUsername} />
-                <input type="password" value={this.state.password} onChange={this.updatePassword} />
+                <input type="text" value={this.state.form.username} onChange={this.updateUsername} />
+                <input type="password" value={this.state.form.password} onChange={this.updatePassword} />
                 <button type="submit">Login</button>
+            </form>
+
+            
+            <form onSubmit={this.createNew} >
+                <input type="text" value={this.state.form.username} onChange={this.updateUsername} />
+                <input type="password" value={this.state.form.password} onChange={this.updatePassword} />
+                <button type="submit">Create New</button>
             </form>
 
 

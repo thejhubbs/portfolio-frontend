@@ -90,14 +90,14 @@ class Body extends React.Component {
           <Row>
             <Col xl='4' lg='5' xs='12' className="page-body-bg">
               <div className="page-body" >
-                <Header />
+                <Header auth={this.props.auth} />
                 <Switch>
                     {
                       pages.map(({path, LeftComponent}) => <Route key={path} exact path={path}>
                           {({ match }) => (
                             <CSSTransition appear={true} enter={true} exit={true} in={match != null} timeout={1000} classNames="fadePagesMin" unmountOnExit>
                                 <div key={path} className="fadePages fp-bottom">
-                                  { path === '/portfolio' ? <LeftComponent side={"left"} details={this.state} functions={functions} /> : <LeftComponent /> }
+                                  { path === '/portfolio' ? <LeftComponent auth={this.props.auth} side={"left"} details={this.state} functions={functions} /> : <LeftComponent   auth={this.props.auth} /> }
                                 </div>
                               </CSSTransition>
                             )}
@@ -115,7 +115,7 @@ class Body extends React.Component {
                       {({ match }) => (
                         <CSSTransition in={match != null} timeout={300} classNames="fadePagesWindow" unmountOnExit>
                             <div className="fadePages">
-                              { path === '/portfolio' ? <RightComponent side={"right"} details={this.state} functions={functions} /> : <RightComponent /> }
+                              { path === '/portfolio' ? <RightComponent  auth={this.props.auth} side={"right"} details={this.state} functions={functions} /> : <RightComponent   auth={this.props.auth} /> }
                             </div>
                           </CSSTransition>
                         )}
