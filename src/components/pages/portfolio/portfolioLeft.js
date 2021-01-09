@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import ImageGalleryItem from './gallery/imageGalleryItem';
 import axios from 'axios'
 import apiPath from '../../functionality/api'
+import {curr_user} from '../../functionality/user'
 
 
 export default class PortfolioLeft extends React.Component {
@@ -39,8 +40,8 @@ export default class PortfolioLeft extends React.Component {
             <i>Click on a project to see full details further down below.</i>
           </div>
 
-
-        <span onClick={this.addProject}>Add Project</span>
+        {curr_user ? 
+        <span onClick={this.addProject}>Add Project</span> : "" }
 
         <div style={{height: '100%'}}>
         {

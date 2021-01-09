@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {curr_user} from '../../../functionality/user'
 
 import apiPath from '../../../functionality/api'
 
@@ -43,7 +44,7 @@ class ImageFocusItem extends React.Component {
 
       <img style={{ maxWidth: '100px', maxHeight: '60px', margin: '5px', cursor: "pointer" }} onClick={this.toggle} src={img.image_url} />
 
-      <span onClick={this.deleteImage}>DELETE</span>
+      {curr_user ? <span onClick={this.deleteImage}>DELETE</span> : "" }
     </span>
 
 

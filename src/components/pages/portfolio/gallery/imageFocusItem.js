@@ -10,6 +10,7 @@ import AddTechnology from './addTechnology'
 import AddImage from './addImage'
 
 import apiPath from '../../../functionality/api'
+import {curr_user} from '../../../functionality/user'
 
 class ImageFocusItem extends React.Component {
   constructor(props) {
@@ -95,7 +96,9 @@ class ImageFocusItem extends React.Component {
 
               <h5>{this.projectField('project_description')}</h5>
 
-              <span>{this.projectField('project_show_priority')}</span>
+              {curr_user ? 
+              <span>{this.projectField('project_show_priority')}</span> : "" }
+
               {
                 project.github_link_2 ? <div>
 
@@ -132,13 +135,14 @@ class ImageFocusItem extends React.Component {
 
                     </div>
                     
-                    <span data-project-tech-id={tech.project_to_technology_id} onClick={this.deleteProjectConnection}>-x</span>
+                    { curr_user ? <span data-project-tech-id={tech.project_to_technology_id} onClick={this.deleteProjectConnection}>-x</span> : "" }
                     </span>
                   ))
 
                 }
                   
-                <AddTechnology project={project} reload={this.reload} />
+                  {curr_user ? 
+                <AddTechnology project={project} reload={this.reload} /> : "" }
 
 
                 
@@ -158,7 +162,8 @@ class ImageFocusItem extends React.Component {
                   images.map(img => <FocusItemImage image={img} reload={this.reload}  />)
                 }<br />
 
-                <AddImage project={project} reload={this.reload}  />
+                {curr_user ?
+                <AddImage project={project} reload={this.reload}  /> : "" }
                   Click to enlarge<br />
               </div>
               <br />

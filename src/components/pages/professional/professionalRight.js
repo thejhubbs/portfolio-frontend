@@ -10,6 +10,8 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Field from '../helpers/field'
 
 import apiPath from '../../functionality/api'
+import {curr_user} from '../../functionality/user'
+
 
 
 class ProfessionalRight extends React.Component {
@@ -122,7 +124,8 @@ class ProfessionalRight extends React.Component {
           <br />
           <p>Please select one for experience & samples of work</p>
           
-        <span onClick={this.addTechnology}>Add Technology</span>
+          {curr_user ? 
+        <span onClick={this.addTechnology}>Add Technology</span> : "" }
 
           {
             this.state.technologies.map(tech =>
@@ -143,19 +146,20 @@ class ProfessionalRight extends React.Component {
             <CSSTransition key={selectedTech.technology_id} in={true} enter={true} exit={true} appear={true} timeout={1000} classNames="fadePortfolio" unmountOnExit><div>
               <h3>{this.projectField('technology_name')}</h3>
               {this.projectField('technology_experience')}
-              {this.projectField('technology_hex_color')}
+              
+              {curr_user ? this.projectField('technology_hex_color') : ""}
               {selectedTech.projects && selectedTech.projects.length > 0 ? <div>
                 <h4>Projects:</h4>
 
                 {selectedTech.projects.map(project => <span>
                   <Link className="plain-link" to={`/portfolio?project=${project.project_id}`}>{project.project_name}</Link>
-                  <span data-project-tech-id={project.project_to_technology_id} onClick={this.deleteProjectConnection}>-x</span>
+                  {curr_user ? <span data-project-tech-id={project.project_to_technology_id} onClick={this.deleteProjectConnection}>-x</span> : "" }
 
                 </span>)} 
 
               </div> : ""}
 
-                  <span onClick={this.deleteTechnology}>DELETE technology</span>
+                  {curr_user ? <span onClick={this.deleteTechnology}>DELETE technology</span> : "" }
 
             </div></CSSTransition></div>
             : ""}

@@ -39,7 +39,7 @@ class App extends React.Component {
 
   render() {
     return <div>
-      {JSON.stringify(this.state)}
+		
         <Body auth={ { login: this.login, logout: this.logout} } />
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed|VT323&display=swap" rel="stylesheet" />
       </div>

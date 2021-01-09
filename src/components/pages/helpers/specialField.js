@@ -1,4 +1,5 @@
 import React from 'react'
+import {curr_user} from '../../functionality/user'
 
 class Field extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Field extends React.Component {
         let display = this.props.cb(value)
         return <>
             { this.state.edit ? <form onSubmit={this.submitForm}><input style={{width:'100%'}} onChange={this.changeValue} value={value} /></form> : display }
-            <span onClick={this.toggle}>{value === "" || !value ? this.props.name : "" }x</span>
+            { curr_user ? <span onClick={this.toggle}>{value === "" || !value ? this.props.name : "" }e</span> : "" }
         </>
     }
 }
