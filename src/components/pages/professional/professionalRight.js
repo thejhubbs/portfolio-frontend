@@ -9,6 +9,8 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import Field from '../helpers/field'
 
+import apiPath from '../../functionality/api'
+
 
 class ProfessionalRight extends React.Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class ProfessionalRight extends React.Component {
   }
 
   reload = () => {
-    axios.get('https://jhubbsportfolio.herokuapp.com/api/technologies')
+    axios.get(apiPath('/technologies'))
       .then(res => {
         this.setState({ technologies: res.data })
         const query = qs.parse(this.props.location.search.substr(1))
@@ -38,7 +40,7 @@ class ProfessionalRight extends React.Component {
   }
 
   selectTech = (tech) => {
-    axios.get(`https://jhubbsportfolio.herokuapp.com/api/technologies/${tech.technology_id}`)
+    axios.get(apiPath(`/technologies/${tech.technology_id}`))
       .then(res => this.setState({ selectedTech: res.data }))
   }
 
@@ -46,9 +48,9 @@ class ProfessionalRight extends React.Component {
     let project_tech_id = e.target.getAttribute('data-project-tech-id')
 
     if (window.confirm('Are you sure you want to delete this connection?')) {
-      axios.delete(`https://jhubbsportfolio.herokuapp.com/api/projects_to_technologies/${project_tech_id}`)
+      axios.delete(apiPath(`/projects_to_technologies/${project_tech_id}`))
         .then(res => {
-          axios.get(`https://jhubbsportfolio.herokuapp.com/api/technologies/${this.state.selectedTech.technology_id}`)
+          axios.get(apiPath(`/technologies/${this.state.selectedTech.technology_id}`))
             .then((res) => {
               this.setState({ selectedTech: res.data })
             })
@@ -60,7 +62,7 @@ class ProfessionalRight extends React.Component {
     let tech_id = this.state.selectedTech.technology_id
 
     if (window.confirm('Are you sure you want to delete this technology?')) {
-      axios.delete(`https://jhubbsportfolio.herokuapp.com/api/technologies/${tech_id}`)
+      axios.delete(apiPath(`/technologies/${tech_id}`))
         .then(res => {
           this.reload()
         })
@@ -78,7 +80,7 @@ class ProfessionalRight extends React.Component {
     let tech = {}
     Object.entries(this.state.selectedTech).map((pField) => ['children', 'parent', 'projects'].includes(pField[0]) ? null : tech[pField[0]] = pField[1])
 
-    axios.put(`https://jhubbsportfolio.herokuapp.com/api/technologies/${tech.technology_id}`, tech)
+    axios.put(apiPath(`/technologies/${tech.technology_id}`), tech)
       .then((res) => {
 
        this.reload()

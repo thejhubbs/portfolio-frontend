@@ -6,13 +6,18 @@ import FocusItemImage from './focusItemImage'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Field from '../../helpers/field'
 import SpecialField from '../../helpers/specialField'
+import AddTechnology from './addTechnology'
+import AddImage from './addImage'
+
+import apiPath from '../../../functionality/api'
 
 class ImageFocusItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
-      project: this.props.project
+      project: this.props.project,
+
     }
   }
 
@@ -30,11 +35,23 @@ class ImageFocusItem extends React.Component {
     let project = {}
     Object.entries(this.state.project).map((pField) => ['images', 'technologies', 'thumbnail'].includes(pField[0]) ? null : project[pField[0]] = pField[1])
 
-    axios.put(`https://jhubbsportfolio.herokuapp.com/api/projects/${this.state.project.project_id}`, project)
+    axios.put(apiPath(`/projects/${this.state.project.project_id}`), project)
       .then((res) => {
-        axios.get(`https://jhubbsportfolio.herokuapp.com/api/projects/${this.state.project.project_id}`)
+        axios.get(apiPath(`/projects/${this.state.project.project_id}`))
           .then((res) => { console.log(res); this.setState({ project: res.data }) })
       })
+  }
+
+  
+  deleteProjectConnection = (e) => {
+    let project_tech_id = e.target.getAttribute('data-project-tech-id')
+
+    if (window.confirm('Are you sure you want to delete this connection?')) {
+      axios.delete(apiPath(`/projects_to_technologies/${project_tech_id}`))
+        .then(res => {
+          
+        })
+    }
   }
 
   projectField = (name) => {
@@ -93,11 +110,22 @@ class ImageFocusItem extends React.Component {
                 <h3>Technologies Used</h3>
                 {
                   project.technologies.map(tech => (
+                    <span>
                     <div className="technology-button" style={{ backgroundColor: tech.technology_hex_color }}>
                       <Link to={`/resume?tech=${tech.technology_id}`}>{tech.technology_name}</Link>
+
                     </div>
+                    
+                    <span data-project-tech-id={tech.project_to_technology_id} onClick={this.deleteProjectConnection}>-x</span>
+                    </span>
                   ))
+
                 }
+                  
+                <AddTechnology project={project} />
+
+
+                
               </div>
             </Col>
 
@@ -112,6 +140,8 @@ class ImageFocusItem extends React.Component {
                 {
                   [project.thumbnail, ...project.images].map(img => <FocusItemImage image={img} />)
                 }<br />
+
+                <AddImage project={project} />
                   Click to enlarge<br />
               </div>
               <br />

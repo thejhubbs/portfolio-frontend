@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import ImageGalleryItem from './gallery/imageGalleryItem';
+import axios from 'axios'
+import apiPath from '../../functionality/api'
 
 
 export default class PortfolioLeft extends React.Component {
@@ -12,6 +14,15 @@ export default class PortfolioLeft extends React.Component {
 
     selectImage = (image) => {
       this.props.functions.selectImage(image)
+    }
+
+    addProject = () => {
+      let data = {project_name: "something", project_description: "something",}
+      
+      axios.post(apiPath('/projects'), data)
+          .then(res => {
+              console.log(res)
+          })
     }
 
     render() {
@@ -27,6 +38,9 @@ export default class PortfolioLeft extends React.Component {
           <div className="d-block d-sm-none">
             <i>Click on a project to see full details further down below.</i>
           </div>
+
+
+        <span onClick={this.addProject}>Add Project</span>
 
         <div style={{height: '100%'}}>
         {

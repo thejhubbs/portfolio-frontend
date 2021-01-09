@@ -17,6 +17,8 @@ import Login from '../functionality/login'
 import qs from 'qs'
 import axios from 'axios'
 
+import apiPath from '../functionality/api'
+
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 class Body extends React.Component {
@@ -56,12 +58,12 @@ class Body extends React.Component {
     }
 
     selectImage = async (image) => {
-        const fullImage = await axios.get(`https://jhubbsportfolio.herokuapp.com/api/projects/${image.project_id}`)
+        const fullImage = await axios.get(apiPath(`/projects/${image.project_id}`))
         this.setState({focusImage: fullImage.data});
     }
 
     loadPage = async () => {
-      const response = await axios.get('https://jhubbsportfolio.herokuapp.com/api/projects')
+      const response = await axios.get(apiPath('/projects'))
       const query = qs.parse(this.props.location.search.substr(1))
       if(query && query.project) {
         this.selectImage({project_id: query.project})

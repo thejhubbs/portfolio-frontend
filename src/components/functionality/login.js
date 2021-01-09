@@ -1,5 +1,6 @@
 import axios from "axios"
 import React from "react"
+import apiPath from '../functionality/api'
 
 class Login extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class Login extends React.Component {
 
     submitForm = (e) => {
         e.preventDefault()
-        axios.post('https://jhubbsportfolio.herokuapp.com/api/users/login', this.state.form)
+        axios.post(apiPath('/users/login'), this.state.form)
             .then(res => {
                 this.setState({ message: res.message })
             })
