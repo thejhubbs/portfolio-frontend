@@ -22,7 +22,7 @@ class ImageFocusItem extends React.Component {
     if (window.confirm("Are you sure you want to delete this image?")) {
       axios.delete(apiPath(`/images/${this.props.image.image_id}`))
         .then(res => {
-
+          this.props.reload()
         })
     }
   }

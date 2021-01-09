@@ -132,6 +132,7 @@ class ProfessionalRight extends React.Component {
             <CSSTransition key={selectedTech.technology_id} in={true} enter={true} exit={true} appear={true} timeout={1000} classNames="fadePortfolio" unmountOnExit><div>
               <h3>{this.projectField('technology_name')}</h3>
               {this.projectField('technology_experience')}
+              {this.projectField('technology_hex_color')}
               {selectedTech.projects && selectedTech.projects.length > 0 ? <div>
                 <h4>Projects:</h4>
 

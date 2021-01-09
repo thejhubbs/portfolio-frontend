@@ -31,6 +31,13 @@ class ImageFocusItem extends React.Component {
     this.setState({ project: project })
   }
 
+  reload = () => {
+    axios.get(apiPath(`/projects/${this.state.project.project_id}`))
+    .then((res) => { 
+      this.setState({ project: res.data }) 
+    })
+  }
+
   submitForm = () => {
     let project = {}
     Object.entries(this.state.project).map((pField) => ['images', 'technologies', 'thumbnail'].includes(pField[0]) ? null : project[pField[0]] = pField[1])
@@ -38,7 +45,10 @@ class ImageFocusItem extends React.Component {
     axios.put(apiPath(`/projects/${this.state.project.project_id}`), project)
       .then((res) => {
         axios.get(apiPath(`/projects/${this.state.project.project_id}`))
-          .then((res) => { console.log(res); this.setState({ project: res.data }) })
+          .then((res) => { 
+            this.setState({ project: res.data }) 
+          
+          })
       })
   }
 
@@ -49,7 +59,7 @@ class ImageFocusItem extends React.Component {
     if (window.confirm('Are you sure you want to delete this connection?')) {
       axios.delete(apiPath(`/projects_to_technologies/${project_tech_id}`))
         .then(res => {
-          
+          this.reload()
         })
     }
   }
@@ -66,7 +76,12 @@ class ImageFocusItem extends React.Component {
   toggle = () => this.setState({ modal: !this.state.modal });
 
   render() {
-    const project = this.props.project
+    const project = this.state.project
+
+    let images = project.images
+    if(project.thumbnail) { images = [ project.thumbnail, ...images ]}
+
+
     return Object.keys(project).length > 1 ?
 
       <div>
@@ -80,6 +95,7 @@ class ImageFocusItem extends React.Component {
 
               <h5>{this.projectField('project_description')}</h5>
 
+              <span>{this.projectField('project_show_priority')}</span>
               {
                 project.github_link_2 ? <div>
 
@@ -122,7 +138,7 @@ class ImageFocusItem extends React.Component {
 
                 }
                   
-                <AddTechnology project={project} />
+                <AddTechnology project={project} reload={this.reload} />
 
 
                 
@@ -136,12 +152,13 @@ class ImageFocusItem extends React.Component {
             <Col xs='12' >
               <br />
               <div className="pageSeparatorHeader">
+                
                 <h4>Images</h4>
                 {
-                  [project.thumbnail, ...project.images].map(img => <FocusItemImage image={img} />)
+                  images.map(img => <FocusItemImage image={img} reload={this.reload}  />)
                 }<br />
 
-                <AddImage project={project} />
+                <AddImage project={project} reload={this.reload}  />
                   Click to enlarge<br />
               </div>
               <br />

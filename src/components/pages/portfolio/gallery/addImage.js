@@ -8,7 +8,8 @@ class AddImage extends React.Component {
 
         this.state = {
             open: false,
-            image: {}
+            image: {},
+            backgroundColor: 'transparent'
         }
     }
 
@@ -19,11 +20,17 @@ class AddImage extends React.Component {
 
     submitImage = (e) => {
         e.preventDefault()
+        this.setState({backgroundColor: 'white'})
         let data = new FormData(e.target)
+        let reload = this.props.reload
         
         axios.post( apiPath('/images') , data)
             .then(res => {
-                
+                this.setState({backgroundColor: 'green'})
+                setTimeout( () => { 
+                    this.setState({backgroundColor: 'transparent'}); 
+                    reload() 
+                }, 2000)
             })
 
     }
@@ -46,7 +53,7 @@ class AddImage extends React.Component {
 
             <div onClick={this.toggle}>Add Image x</div>
 
-            {this.state.open ? <form onSubmit={this.submitImage}>
+            {this.state.open ? <form onSubmit={this.submitImage} style={{backgroundColor: this.state.backgroundColor}}>
                 
                 <input type="hidden" name="image_project_id" value={this.props.project.project_id} />
                 <input type="checkbox" name="thumbnail"  />

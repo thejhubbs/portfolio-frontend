@@ -20,6 +20,7 @@ class AddTechnology extends React.Component {
     reload = () => {
         axios.get(apiPath('/technologies'))
             .then(res => {
+                this.props.reload()
                 this.setState({ technologies: res.data })
             })
     }
