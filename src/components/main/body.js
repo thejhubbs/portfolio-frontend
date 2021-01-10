@@ -97,7 +97,7 @@ class Body extends React.Component {
                           {({ match }) => (
                             <CSSTransition appear={true} enter={true} exit={true} in={match != null} timeout={1000} classNames="fadePagesMin" unmountOnExit>
                                 <div key={path} className="fadePages fp-bottom">
-                                  { path === '/portfolio' ? <LeftComponent auth={this.props.auth} side={"left"} details={this.state} functions={functions} /> : <LeftComponent   auth={this.props.auth} /> }
+                                  { path === '/portfolio' ? <LeftComponent loadPage={this.loadPage} auth={this.props.auth} side={"left"} details={this.state} functions={functions} /> : <LeftComponent   auth={this.props.auth} /> }
                                 </div>
                               </CSSTransition>
                             )}

@@ -12,7 +12,7 @@ export default class Portfolio extends React.Component {
 
   render() {
     return  this.props.side === "left" ?
-      <PortfolioLeft details={this.props.details} functions={this.props.functions} />
+      <PortfolioLeft loadPage={this.props.loadPage} details={this.props.details} functions={this.props.functions} />
       : <PortfolioRight details={this.props.details} />
   }
 

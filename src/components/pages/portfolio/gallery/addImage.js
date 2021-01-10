@@ -51,7 +51,7 @@ class AddImage extends React.Component {
 
         return <div>
 
-            <div onClick={this.toggle}>Add Image x</div>
+            <div onClick={this.toggle}>{ this.state.open ? <span className="fas fa-chevron-down"></span> : <span className="fas fa-chevron-up"></span> }</div>
 
             {this.state.open ? <form onSubmit={this.submitImage} style={{backgroundColor: this.state.backgroundColor}}>
                 
@@ -61,7 +61,8 @@ class AddImage extends React.Component {
                 <input type="hidden" name="image_description" value={"Something"} />
 
                 <input onChange={this.changeImage} name="image_raw" type="file" />
-                <button type="submit">Add Image</button>
+                <button type="submit">
+              <span className="fas fa-plus"></span></button>
 
             </form> : ""}
 

@@ -120,10 +120,10 @@ class ImageFocusItem extends React.Component {
                     }
                   </div>
               }
-              {
-                project.live_link ?
-                  <a className="plain-link" href={project.live_link} target="_blank">View Live</a> : ""
-              }
+              
+                {this.specialField('live_link', (value) => { return <a className="plain-link" href={value} target="_blank">View Live</a> })}
+               
+              
 
               <div style={{ padding: '15px' }}>
                 <h3>Technologies Used</h3>
@@ -135,7 +135,7 @@ class ImageFocusItem extends React.Component {
 
                     </div>
                     
-                    { curr_user ? <span data-project-tech-id={tech.project_to_technology_id} onClick={this.deleteProjectConnection}>-x</span> : "" }
+                    { curr_user ? <span data-project-tech-id={tech.project_to_technology_id} onClick={this.deleteProjectConnection}><span className="fas fa-trash">Connection</span></span> : "" }
                     </span>
                   ))
 

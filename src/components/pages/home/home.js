@@ -40,10 +40,10 @@ export class HomeRight extends React.Component {
     style.icon = { fontSize: '60px', margin: '0', padding: '0', textAlign: 'center', color: 'white', textDecoration: 'none' }
 
 
-    return <div className="home-window" ><div>
+    return <div className="home-bg" ><div className="home-window" ><div>
 
       <h2 className="d-block d-sm-none" style={style.icon}><hr className="menu-hr" />Jordan Andrew Hubbard<hr className="menu-hr" /></h2>
-      <h3 class="tfc">- Developer & Engineer</h3>
+      <h3 class="tfc">- Freelance Web Developer</h3>
                   <h3>- Leadership oriented and <br className="d-block d-sm-none" />strong teamwork skills</h3>
                   <h3>- Javascript, HTML, CSS Expert</h3>
                   <h3>- Wordpress, Squarespace, Wix, Shopify</h3>
@@ -53,6 +53,6 @@ export class HomeRight extends React.Component {
 
 
     </div>
-    </div>
+    </div></div>
   }
 }

@@ -153,13 +153,13 @@ class ProfessionalRight extends React.Component {
 
                 {selectedTech.projects.map(project => <span>
                   <Link className="plain-link" to={`/portfolio?project=${project.project_id}`}>{project.project_name}</Link>
-                  {curr_user ? <span data-project-tech-id={project.project_to_technology_id} onClick={this.deleteProjectConnection}>-x</span> : "" }
+                  {curr_user ? <span data-project-tech-id={project.project_to_technology_id} onClick={this.deleteProjectConnection}><span class="fas fa-trash">Connection</span></span> : "" }
 
                 </span>)} 
 
               </div> : ""}
 
-                  {curr_user ? <span onClick={this.deleteTechnology}>DELETE technology</span> : "" }
+                  {curr_user ? <div onClick={this.deleteTechnology}><span class="fas fa-trash">Technology</span></div> : "" }
 
             </div></CSSTransition></div>
             : ""}

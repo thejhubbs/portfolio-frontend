@@ -13,6 +13,14 @@ h1, h2 {
   text-decoration: underline;
 }
 
+.fas {
+  cursor: pointer;
+  background: rgba(255,255,255,.3);
+  padding: 5px;
+}
+.fas:hover {
+  background: rgba(255,255,255,.6);
+}
 
 
 @media only screen and (min-width: 992px) {
@@ -60,7 +68,7 @@ a {
 }
 
 .bg-overlay{
-  background: linear-gradient( 90deg, rgba(lighten($light-grey-color, .5), 1), rgba(darken($light-grey-color, .5), 1)   );
+  background: linear-gradient( 135deg, rgba(lighten($light-grey-color, 25%), 1), rgba(lighten($light-grey-color, 5%), 1)   );
 }
 
 #contact {
@@ -93,7 +101,6 @@ a {
   .fadePages{
     position:absolute;
     width:100%;
-    padding:20px;
   }
 }
 
@@ -101,7 +108,6 @@ a {
   .fadePages{
     position:relative;
     width:100%;
-    padding:20px;
   }
 }
 
@@ -135,13 +141,21 @@ a {
   justify-content: flex-end;
   align-items: flex-end;
   min-height: 100vh;
-    margin: -20px;
+  background: linear-gradient( 135deg, rgba(lighten($light-grey-color, 25%), .5), rgba(lighten($light-grey-color, 5%), .5)   );
+    
     padding: 20px;
   & > h2, & > h3 {
     padding:10px;
     margin:10px;
 
   }
+}
+
+.home-bg {
+  background-image: url('../src/img/profile-bg-sm.png');
+  background-size: cover;
+  background-repeat:none;
+  background-position: center;;
 }
 
 @media only screen and (max-width: 991px) {
@@ -180,33 +194,26 @@ a {
 
 
 @media only screen and (min-width: 992px) {
-
   .page-body-bg {
     height:100vh;
-    padding:0px;
-    
-    
+    padding:0px; 
   }
-
   .page-body {
     height:100vh;
     width:100%;
-    background:linear-gradient( rgba($primary-color, 1), rgba($dpc, 1) );
+    background:linear-gradient( rgba($lpc, 1), rgba($dpc, 1) );
   }
 }
 
 @media only screen and (max-width: 991px) {
-
   .page-body-bg {
     padding:0px;
     background-size:cover;
   }
-
   .page-body {
     padding: 25px 0;
     width:100%;
     background:linear-gradient( rgba($primary-color, .5), rgba($dpc, .5) );
-
   }
 }
 
@@ -223,7 +230,6 @@ a {
       padding:4px;
       height: 24px;
       width: 24px;
-
     }
     & > img:hover {
       border-radius: 12px;

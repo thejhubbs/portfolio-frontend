@@ -44,7 +44,7 @@ class ImageFocusItem extends React.Component {
 
       <img style={{ maxWidth: '100px', maxHeight: '60px', margin: '5px', cursor: "pointer" }} onClick={this.toggle} src={img.image_url} />
 
-      {curr_user ? <span onClick={this.deleteImage}>DELETE</span> : "" }
+      {curr_user ? <div onClick={this.deleteImage}><span class="fas fa-trash">Image</span></div> : "" }
     </span>
 
 

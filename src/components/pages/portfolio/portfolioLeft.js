@@ -22,7 +22,7 @@ export default class PortfolioLeft extends React.Component {
       
       axios.post(apiPath('/projects'), data)
           .then(res => {
-              console.log(res)
+              this.props.loadPage()
           })
     }
 
@@ -41,12 +41,12 @@ export default class PortfolioLeft extends React.Component {
           </div>
 
         {curr_user ? 
-        <span onClick={this.addProject}>Add Project</span> : "" }
+        <span onClick={this.addProject} className="fas fa-plus"></span> : "" }
 
         <div style={{height: '100%'}}>
         {
             projects.slice(startPosition, endPosition).map(item => (item ?
-                <ImageGalleryItem focusId={focusImage.project_id} key={item.id} project={item} selectImage={this.selectImage} />
+                <ImageGalleryItem loadPage={this.props.loadPage} focusId={focusImage.project_id} key={item.id} project={item} selectImage={this.selectImage} />
                 : ""
             ))
         }
@@ -55,7 +55,7 @@ export default class PortfolioLeft extends React.Component {
 
             <span onClick={this.props.functions.previousPage} style={{cursor:"pointer"}} className="arrow left-arrow">  {
                 page > 1 ?
-              <img height="16px" src={require("../../../img/chevron-left.svg")} alt="left arrow" />
+                <span className="fas fa-chevron-left"></span>
             : " "
           }
             </span>
@@ -65,7 +65,7 @@ export default class PortfolioLeft extends React.Component {
             <span onClick={this.props.functions.advancePage} data-pages={totalPages} style={{cursor:"pointer"}} className="arrow right-arrow">
                     {
                       page < totalPages ?
-              <img  src={require("../../../img/chevron-right.svg")} alt="right arrow" />
+              <span className="fas fa-chevron-right"></span>
            : " "
          }
              </span>

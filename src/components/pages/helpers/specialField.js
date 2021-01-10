@@ -25,10 +25,10 @@ class Field extends React.Component {
 
     render() {
         let value = this.props.item[this.props.name]
-        let display = this.props.cb(value)
+        let display = value ? this.props.cb(value) : (curr_user ? this.props.name : "" )
         return <>
             { this.state.edit ? <form onSubmit={this.submitForm}><input style={{width:'100%'}} onChange={this.changeValue} value={value} /></form> : display }
-            { curr_user ? <span onClick={this.toggle}>{value === "" || !value ? this.props.name : "" }e</span> : "" }
+            { curr_user ? <span onClick={this.toggle}><span class="fas fa-edit"></span></span> : "" }
         </>
     }
 }

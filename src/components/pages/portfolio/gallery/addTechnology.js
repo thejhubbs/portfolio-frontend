@@ -55,7 +55,8 @@ class AddTechnology extends React.Component {
 
         return <div>
 
-            <div onClick={this.toggle}>Add Technology x</div>
+            <div onClick={this.toggle}>
+              <span className="fas fa-plus"></span></div>
 
             {this.state.open ? <div>
                 { tech.map( (t) => <div onClick={this.addTech} data-tech-id={t.technology_id} > {t.technology_name} </div>) }

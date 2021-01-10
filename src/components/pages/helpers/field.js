@@ -12,7 +12,7 @@ class Field extends React.Component {
     }
 
     toggle = () => {
-        this.setState({edit: !this.state.edit})
+        this.setState({ edit: !this.state.edit })
     }
 
     changeValue = (e) => {
@@ -26,15 +26,23 @@ class Field extends React.Component {
     }
 
     render() {
-        let value = this.props.item[this.props.name] 
-        return <>
-            { this.state.edit ? 
+        let value = this.props.item[this.props.name]
+        return <div>
+            {this.state.edit ?
                 <form onSubmit={this.submitForm}>
-                    <input style={{width:'100%'}} onChange={this.changeValue} value={value} /></form> : value }
+                    <input style={{ width: '100%' }} onChange={this.changeValue} value={value} />
+                    <button type="submit" class="fas fa-check"></button>
+                    <button onClick={this.toggle} class="fas fa-times"></button>
+                </form> :
+                <div>
+                    {value}
+                    {curr_user ?
+                        <span onClick={this.toggle}>{value === "" || !value ? this.props.name : ""} {this.state.edit ? <span class="fas fa-times"></span> : <span class="fas fa-edit"></span>} </span>
+                        : ""}
+                </div>
+            }
 
-            { curr_user ? 
-            <span onClick={this.toggle}>{value === "" || !value ? this.props.name : "" }e</span> : "" }
-        </>
+        </div>
     }
 }
 
