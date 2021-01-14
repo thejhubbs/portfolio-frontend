@@ -8,7 +8,7 @@
   font-family: "Noto Sans"
 }
 
-h1, h2 {
+h1, h2, h1 *, h2 *  {
   font-family: "VT323";
   text-decoration: underline;
 }
@@ -34,8 +34,8 @@ h1, h2 {
 
 }
 
-h3, h4, h5, h6, a {
-  font-family: "Roboto Condensed"
+h3, h4, h5, h6 {
+  font-family: "Fjalla One"
 }
 
 a {
@@ -177,15 +177,17 @@ a {
 
 
 @media only screen and (min-width: 992px) {
-  .code-line {
+  .code-line, .code-line span {
     font-size:18px;
+    font-family: "Noto Sans";
     margin:2px;
   }
 }
 
 @media only screen and (max-width: 991px) {
-  .code-line {
+  .code-line, .code-line span {
     font-size:12px;
+    font-family: "Noto Sans";
     margin:2px;
   }
 }
@@ -274,16 +276,17 @@ a {
 .page-button {
   color:$white-color;
   text-decoration:none;
-  background:linear-gradient(   $dpc, $primary-color, $primary-color, $dpc );
+  background:linear-gradient(   $ddpc, $dpc, $dpc, $ddpc );
   text-align:center;
   display:inline-block;
   min-width:140px;
-  padding:10px;
+  padding:10px 32px;
   margin:10px;
   font-size: 18px;
-  border-radius:8px;
+  border-radius:2px;
+  
   &:hover {
-    background:linear-gradient( $primary-color, $dpc, $primary-color, );
+    background:linear-gradient( $dpc, $ddpc, $dpc, );
     color:$white-color;
   }
 }
@@ -296,7 +299,7 @@ a {
 
 .pb-primary {
     background:linear-gradient(   $dhc, $highlight-color, $highlight-color, $dhc );
-    color:$black-color;
+    color:$white-color;
 
     &:hover {
       background:linear-gradient( $highlight-color, $dhc, $highlight-color, );
@@ -321,11 +324,11 @@ a {
 
 .pageSeparatorHeader {
   padding: 15px;
-  margin: 0 -20px;
+  margin: 0;
   background-color:$primary-color;
   text-align: center;
   color:$black-color;
-  background: linear-gradient(175deg, $llpc, $lpc, $primary-color, $ddpc);
+  background: linear-gradient(175deg, $lpc, $primary-color, $dpc);
 }
 
 
@@ -363,17 +366,18 @@ a {
 }
 
 .menu-link {
-  color:$white-color;
+  color:$black-color;
+  font-family: 'Fjalla One';
   padding:15px 10px;
   display:inline-block;
-  text-decoration:none;
+  text-decoration:underline;
   &:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 
 .menu-link.active {
-    text-decoration:underline;
+    text-decoration:none;
 }
 
 .contact-icon-link {

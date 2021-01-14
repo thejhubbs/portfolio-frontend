@@ -33,20 +33,23 @@ class ImageGalleryItem extends React.Component {
             margin: "1%",
             width: '100%',
             padding:'1%',
-            height: "25vh",
+            height: "22vh",
             display: 'inline-block',
             cursor: "pointer",
-            
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
             borderRadius: "10px",
+            justifyContent: "center"
             
         }
 
         return <div className="individualProject target" onClick={this.selectImage} style={ style }>
-          <b><u>{ project.project_name }</u></b><br />
+          <h5 style={{width: '100%'}}>{ project.project_name }</h5>
 
-        <img src={project.image_url} style={{height:'15vh'}} />
+        <img src={project.image_url} style={{height:'10vh'}} />
 
-          <div className=""> { project.project_description }</div>
+          <div style={{width: '100%'}}> { project.project_description }</div>
 
           {curr_user ? <div onClick={this.deleteProject}><span class="fas fa-trash">Project</span></div> : "" }
         </div>

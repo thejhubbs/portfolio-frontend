@@ -40,7 +40,7 @@ class App extends React.Component {
   render() {
     return <div>
         <Body auth={ { login: this.login, logout: this.logout} } />
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto+Condensed|VT323&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Fjalla+One|VT323&display=swap" rel="stylesheet" />
       </div>
 
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap'
 import AboutCode from './professionalCode'
 import TechItem from './techItem'
 import axios from 'axios'
@@ -117,7 +117,8 @@ class ProfessionalRight extends React.Component {
                   <a href={docLink} target="_blank" className="page-button pb-primary" style={{marginTop:'10px'}}>View Resume in Traditional Format</a>
                   <a href={pdfLink} target="_blank"  className="page-button pb-primary" style={{marginTop:'10px'}}>Download as Printable PDF</a>
     </div>*/}
-      <h2 style={{ marginTop: '-20px' }} className="pageSeparatorHeader" >Technologies/Languages</h2>
+      <h2 className="pageSeparatorHeader" >Technologies/Languages</h2>
+      <Container>
       <Row>
 
         <Col lg="6" xs="12">
@@ -128,7 +129,7 @@ class ProfessionalRight extends React.Component {
         <span onClick={this.addTechnology}>Add Technology</span> : "" }
 
           {
-            this.state.technologies.map(tech =>
+            this.state.technologies.sort( (a ,b) => a.technology_name.localeCompare(b.technology_name) ).map(tech =>
 
               <span className="technology-button" style={
                 {
@@ -151,7 +152,7 @@ class ProfessionalRight extends React.Component {
               {selectedTech.projects && selectedTech.projects.length > 0 ? <div>
                 <h4>Projects:</h4>
 
-                {selectedTech.projects.map(project => <span>
+                {selectedTech.projects.sort((a ,b) => a.project_show_priority - b.project_show_priority).map(project => <span>
                   <Link className="plain-link" to={`/portfolio?project=${project.project_id}`}>{project.project_name}</Link>
                   {curr_user ? <span data-project-tech-id={project.project_to_technology_id} onClick={this.deleteProjectConnection}><span class="fas fa-trash">Connection</span></span> : "" }
 
@@ -165,7 +166,7 @@ class ProfessionalRight extends React.Component {
             : ""}
         </Col>
       </Row>
-
+      </Container>
 
 
     </div>

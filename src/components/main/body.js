@@ -96,7 +96,7 @@ class Body extends React.Component {
                       pages.map(({path, LeftComponent}) => <Route key={path} exact path={path}>
                           {({ match }) => (
                             <CSSTransition appear={true} enter={true} exit={true} in={match != null} timeout={1000} classNames="fadePagesMin" unmountOnExit>
-                                <div key={path} className="fadePages fp-bottom">
+                                <div key={path} className="fadePages fp-bottom" style={{padding: '20px'}}>
                                   { path === '/portfolio' ? <LeftComponent loadPage={this.loadPage} auth={this.props.auth} side={"left"} details={this.state} functions={functions} /> : <LeftComponent   auth={this.props.auth} /> }
                                 </div>
                               </CSSTransition>

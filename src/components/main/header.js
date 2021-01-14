@@ -11,6 +11,8 @@ class Header extends React.Component {
 
     render(){
         return <div className="page-header">
+            <br />
+            <img src={require('../../img/text-logo.png')} /><br />
             <Menu auth={this.props.auth} />
         </div>
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Col, Row } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Container, Col, Row } from 'reactstrap';
 import FocusItemImage from './focusItemImage'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Field from '../../helpers/field'
@@ -55,7 +55,7 @@ class ImageFocusItem extends React.Component {
 
   
   deleteProjectConnection = (e) => {
-    let project_tech_id = e.target.getAttribute('data-project-tech-id')
+    let project_tech_id = e.target.getAttribute('data-pti')
 
     if (window.confirm('Are you sure you want to delete this connection?')) {
       axios.delete(apiPath(`/projects_to_technologies/${project_tech_id}`))
@@ -88,11 +88,12 @@ class ImageFocusItem extends React.Component {
       <div>
         <CSSTransition key={project.project_id} in={true} enter={true} exit={true} appear={true} timeout={1000} classNames="fadePortfolio" unmountOnExit><div>
 
-          <h2 style={{ marginTop: '-20px' }} className="pageSeparatorHeader" >{this.projectField('project_name')}</h2><br />
+          <h2 className="pageSeparatorHeader" >{this.projectField('project_name')}</h2><br />
 
+<>
 
           <Row>
-            <Col lg="6" xs="12">
+            <Col lg="6" xs="12" style={{padding:'20px 40px'}}>
 
               <h5>{this.projectField('project_description')}</h5>
 
@@ -134,8 +135,7 @@ class ImageFocusItem extends React.Component {
                       <Link to={`/resume?tech=${tech.technology_id}`}>{tech.technology_name}</Link>
 
                     </div>
-                    
-                    { curr_user ? <span data-project-tech-id={tech.project_to_technology_id} onClick={this.deleteProjectConnection}><span className="fas fa-trash">Connection</span></span> : "" }
+                    { curr_user ? <span data-pti={tech.project_to_technology_id} onClick={this.deleteProjectConnection} className="fas fa-trash">Connection</span> : "" }
                     </span>
                   ))
 
@@ -150,7 +150,7 @@ class ImageFocusItem extends React.Component {
             </Col>
 
 
-            <Col lg="6" xs="12">
+            <Col lg="6" xs="12" style={{padding:'20px 40px'}}>
               <img width='100%' src={project.thumbnail ? project.thumbnail.image_url : ""} /><br />
             </Col>
             <Col xs='12' >
@@ -171,6 +171,9 @@ class ImageFocusItem extends React.Component {
 
 
           </Row>
+          </>
+
+          <><Row><Col>
 
           {project.project_details ?
             <div style={{ padding: '20px' }}>
@@ -199,6 +202,8 @@ class ImageFocusItem extends React.Component {
               {this.projectField('project_history')}
             </div>
             : this.projectField('project_history')}
+
+</Col></Row></>
 
         </div></CSSTransition></div>
       : ""
