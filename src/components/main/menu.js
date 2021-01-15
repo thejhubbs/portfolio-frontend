@@ -16,7 +16,10 @@ class Menu extends React.Component {
     return <span>
         <NavLink className="menu-link" exact to="/">Home</NavLink>
         <NavLink className="menu-link" to="/portfolio">Portfolio</NavLink>
-        <NavLink className="menu-link" to="/resume">Technologies</NavLink><br className='d-block d-sm-none' />
+        <NavLink className="menu-link" to="/resume">Technologies</NavLink>
+        {/*<br className='d-block d-sm-none' />
+        <NavLink className="menu-link" to="/reviews">Reviews</NavLink>
+    <NavLink className="menu-link" to="/personal">About Me</NavLink> */}
         <NavLink className="menu-link" to="/contact">Contact</NavLink><hr className='d-block d-sm-none menu-hr'  />
         { curr_user ? <span className="menu-link" onClick={this.props.auth.logout}>Logout</span> : "" }
     </span>

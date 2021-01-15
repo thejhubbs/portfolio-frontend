@@ -47,9 +47,9 @@ class ImageGalleryItem extends React.Component {
         return <div className="individualProject target" onClick={this.selectImage} style={ style }>
           <h5 style={{width: '100%'}}>{ project.project_name }</h5>
 
-        <img src={project.image_url} style={{height:'10vh'}} />
+            <img src={project.image_url} style={{height:'50%'}} />
 
-          <div style={{width: '100%'}}> { project.project_description }</div>
+          <div style={{width: '100%', height: '25%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: "ellipsis"}}> { project.project_description }</div>
 
           {curr_user ? <div onClick={this.deleteProject}><span class="fas fa-trash">Project</span></div> : "" }
         </div>

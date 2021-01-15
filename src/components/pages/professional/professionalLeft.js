@@ -20,7 +20,7 @@ export default class ProfessionalLeft extends React.Component {
 
         return  <div className="tfc-lg">
 
-                        <h1>//Skillz</h1>
+                        <h1>//Skills</h1>
                         <AboutCode />
 
                         <div className="d-none d-sm-block">
